@@ -1,0 +1,141 @@
+@import "../colors";
+
+.sidenav {
+  float: left;
+  width: 20%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  top: 20px;
+  background: $color-main;
+  overflow-x: hidden;
+  padding: 8px;
+  border-radius: 10px;
+  height: 500px;
+  box-shadow: 0 2px 2px $color-shadow;
+  transition: 1s;
+
+  label {
+    padding: 6px 8px 6px 16px;
+    font-size: 21px;
+    color: $color-dark;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .textbox {
+    margin-left: 18px;
+    margin-top: 6px;
+    height: 25px;
+    width: 70%;
+    border: none;
+    border-radius: 10px;
+    color: $color-dark;
+    background-color: $color-main;
+    outline: $color-light solid 1.5px;
+    transition: background-color 0.2s ease-out 0.1s;
+    text-align: center;
+  }
+
+  input:focus {
+    outline: $color-light solid 1.5px;
+    background-color: $color-light;
+  }
+
+  .genre-wrap {
+    height: 60%;
+  }
+
+  .list-wrap {
+    height: 80%;
+    overflow-x: hidden;
+  }
+
+  .genre-list {
+    width: 100%;
+  }
+
+  .genre-list li {
+    margin: 8px;
+    width: 80%;
+    outline: $color-light solid 1.5px;
+    border-radius: 10px;
+  }
+
+  .genre-list label{
+    color: $color-dark;
+    display: block;
+  }
+
+  .genre-check {
+    float: right;
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    float: right;
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 25px;
+    outline: $color-light solid 1.5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+
+  .genre-list label:hover .genre-check ~ .checkmark {
+    background-color: $color-light;
+  }
+
+  .genre-check:checked ~ .checkmark {
+    background-color: $color-light;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .genre-check:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .genre-list .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid $color-dark;
+    border-width: 0 2px 2px 0;
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .author-wrap {
+    height: 20%;
+    position: relative;
+    display: block;
+  }
+
+  .publisher-wrap {
+    height: 20%;
+    position: relative;
+    display: block;
+  }
+
+  hr {
+    border: 1px solid $color-light;
+    width: 80%;
+  }
+}
+
+.sidenav:hover {
+  box-shadow: none;
+}

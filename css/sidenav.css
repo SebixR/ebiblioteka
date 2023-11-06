@@ -1,0 +1,28 @@
+.sidenav {
+  width: 20%;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: #DBB280;
+  overflow-x: hidden;
+  padding: 8px;
+  border-radius: 10px;
+}
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 21px;
+  color: #3d2410;
+  display: block;
+  border-radius: 10px;
+}
+.sidenav a:hover {
+  background-color: #ecd8b2;
+}
+
+footer {
+  width: 100%;
+  background-color: #f3e3cb;
+}
+
+/*# sourceMappingURL=sidenav.css.map */

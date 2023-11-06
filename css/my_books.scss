@@ -1,0 +1,86 @@
+@import "../colors";
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $color-background;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+@import "topnav";
+
+@import "borrowed";
+
+.purchased-h {
+  position: relative;
+  display: flex;
+  width: 25%;
+  min-width: 200px;
+  height: 50px;
+  margin: 20px;
+  padding-left: 12px;
+  border-radius: 10px;
+  color: $color-dark;
+  align-items: center;
+  box-shadow: 0 2px 2px $color-shadow;
+  background-color: $color-main;
+}
+
+.purchased-wrap {
+  position: relative;
+  display: flex;
+  width: 98%;
+  margin: 20px auto;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 0 0 15px $color-main;
+  transition: box-shadow 1s;
+}
+
+.purchased-wrap:hover{
+  box-shadow: none;
+}
+
+.row {
+  overflow: auto;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  width: 98%;
+  height: 100%;
+  max-height: 600px;
+  border-radius: 10px;
+  margin: 8px auto;
+  justify-content: flex-start;
+}
+
+.row-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  margin: 12px;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.row-item:hover {
+  opacity: 0.8;
+  box-shadow: 0 2px 2px $color-shadow;
+}
+
+.row-item a{
+  height: inherit;
+}
+
+.row-item img {
+  height: 100%;
+  border-radius: 10px;
+}

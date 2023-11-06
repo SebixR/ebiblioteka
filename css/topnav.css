@@ -1,0 +1,58 @@
+.topnav {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #DBB280;
+  border-radius: 10px;
+}
+.topnav form {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.topnav input {
+  float: left;
+  height: 25px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+}
+.topnav input:focus {
+  color: #3d2410;
+  outline: none;
+  box-shadow: 0 0 1pt 1pt #3d2410;
+}
+.topnav .search-button {
+  width: 40px;
+  height: 27px;
+  border: none;
+  margin-left: 5px;
+  background: #f3e3cb;
+  color: #3d2410;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.topnav .search-button:hover {
+  background: white;
+}
+.topnav .search-wrap {
+  float: left;
+  width: 40%;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #3d2410;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.topnav a:hover {
+  background-color: #ecd8b2;
+}
+
+/*# sourceMappingURL=topnav.css.map */

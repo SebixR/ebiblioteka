@@ -1,0 +1,85 @@
+@import "../colors";
+
+.borrowed-h {
+  position: relative;
+  display: flex;
+  width: 25%;
+  min-width: 200px;
+  height: 50px;
+  margin: 20px;
+  padding-left: 12px;
+  border-radius: 10px;
+  color: $color-dark;
+  align-items: center;
+  box-shadow: 0 2px 2px $color-shadow;
+  background-color: $color-main;
+}
+
+.borrowed-wrap {
+  position: relative;
+  display: flex;
+  width: 98%;
+  height: 250px;
+  margin: 20px auto;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 0 0 15px $color-main;
+  transition: box-shadow 1s;
+}
+
+.borrowed-wrap:hover{
+  box-shadow: none;
+}
+
+.borrowed-imgs {
+  width: 98%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  overflow-y: hidden;
+}
+
+.item {
+  position: relative;
+  height: 95%;
+  margin-left: 12px;
+  margin-right: 12px;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.item img {
+  height: 100%;
+  border-radius: 10px;
+  transition: opacity 0.7s;
+}
+
+.time-label {
+  display: block;
+  opacity: 0;
+  color: $color-dark;
+  font-size: 15pt;
+  position: relative;
+  top: -65%;
+  background-color: $color-light;
+  line-height: 170%;
+  transition: opacity 0.7s;
+}
+
+.item a{
+  text-decoration: none;
+}
+
+.item:hover{
+  .time-label{
+    opacity: 1;
+  }
+  img {
+    opacity: 0.6;
+  }
+  box-shadow: 0 2px 2px $color-shadow;
+}
