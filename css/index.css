@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Times New Roman", serif;
 }
 
 body {
@@ -212,8 +213,12 @@ body {
   border-radius: 10px;
 }
 .sidenav .genre-list label {
+  padding: 6px 6px 6px 6px;
   color: #3d2410;
-  display: block;
+  font-size: 14pt;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .sidenav .genre-check {
   float: right;
@@ -325,7 +330,7 @@ body {
 }
 
 .image:hover {
-  border: #DBB280 solid 1px;
+  transform: scale(1.1, 1.1);
   box-shadow: none;
 }
 

@@ -64,8 +64,12 @@
   }
 
   .genre-list label{
+    padding: 6px 6px 6px 6px;
     color: $color-dark;
-    display: block;
+    font-size: 14pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .genre-check {

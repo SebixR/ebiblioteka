@@ -54,6 +54,8 @@
 
 .item img {
   height: 100%;
+  width: 100%;
+  min-width: 125px;
   border-radius: 10px;
   transition: opacity 0.7s;
 }

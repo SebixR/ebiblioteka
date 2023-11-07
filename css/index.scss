@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Times New Roman", serif;
 }
 
 body {
@@ -65,7 +66,7 @@ body {
 }
 
 .image:hover {
-  border: $color-main solid 1px;
+  transform: scale(1.1, 1.1);
   box-shadow: none;
 }
 
