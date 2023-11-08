@@ -16,7 +16,7 @@
     <header>
         <nav class="topnav">
             <a class="home" href="index.php">Home</a>
-            <a class="my-books" style="float:right" href="views/my_books.php">My Books</a>
+            <a class="my-books" style="float:right" href="php/my_books.php">My Books</a>
             <div class="search-wrap">
                 <form>
                     <input type="text" class="search" placeholder="Search">

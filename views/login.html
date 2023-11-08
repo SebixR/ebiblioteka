@@ -1,13 +1,10 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
@@ -16,7 +13,7 @@
     <header>
         <nav class="topnav">
             <a class="home" href="../index.php">Home</a>
-            <a class="my-books" style="float:right" href="my_books.php">My Books</a>
+            <a class="my-books" style="float:right" href="../php/my_books.php">My Books</a>
             <div class="search-wrap">
                 <form>
                     <input type="text" class="search" placeholder="Search">
@@ -35,7 +32,7 @@
 
     <div class="login">
         <h2>Login</h2>
-        <form class="login-form">
+        <form class="login-form" action="../php/register.php" method="post">
             <div class="login-content">
                 <label>
                     <input type="email" class="textbox" placeholder="Email">
@@ -50,7 +47,7 @@
         <div class="or-register">
             <hr>
             <span>Don't have an account?</span>
-            <a href="register.php">
+            <a href="../php/register.php">
                 <button class="register-button">Register</button>
             </a>
         </div>
