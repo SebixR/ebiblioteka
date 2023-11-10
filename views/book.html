@@ -19,13 +19,31 @@
                 <button type="submit" class="search-button">Go</button>
             </form>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" onclick="dropDown()">
             <button class="settings">Test</button>
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdown">
                 <a href="#">Settings</a>
                 <a href="#">Log out</a>
             </div>
         </div>
+        <script>
+            function dropDown() {
+                document.getElementById("dropdown").classList.toggle("show-dropdown");
+            }
+
+            window.onclick = function(event) {
+                if (!event.target.matches('.settings')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show-dropdown')) {
+                            openDropdown.classList.remove('show-dropdown');
+                        }
+                    }
+                }
+            }
+        </script>
     </nav>
 </header>
 

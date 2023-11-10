@@ -95,15 +95,12 @@
     background-position: -100% 0;
   }
 
-  .dropdown:hover, .settings:hover, .dropdown-content:hover {
-    .dropdown-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .settings:hover {
-      background-color: $color-light;
-    }
+
+  .show-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $color-light;
   }
 
   .settings {

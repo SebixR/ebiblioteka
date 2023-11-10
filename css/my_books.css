@@ -95,12 +95,10 @@ body {
 .topnav .dropdown-content a:hover {
   background-position: -100% 0;
 }
-.topnav .dropdown:hover .dropdown-content, .topnav .settings:hover .dropdown-content, .topnav .dropdown-content:hover .dropdown-content {
+.topnav .show-dropdown {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.topnav .dropdown:hover .settings:hover, .topnav .settings:hover .settings:hover, .topnav .dropdown-content:hover .settings:hover {
   background-color: #efdbb8;
 }
 .topnav .settings {
