@@ -55,7 +55,7 @@ require_once '../php/register.php';
 
     <div class="register">
         <h2>Register</h2>
-        <form class="register-form" method="post" action="../php/register.php">
+        <form action="../php/register.php" method="post" class="register-form">
             <div class="register-content">
                 <label>
                     <input type="text" class="textbox" name="name" placeholder="Name" required>
@@ -73,7 +73,7 @@ require_once '../php/register.php';
                     <input type="password" class="textbox" name="password_repeat" placeholder="Password" required>
                 </label>
             </div>
-            <button class="register-button">Register</button>
+            <button type="submit" name="submit" class="register-button">Register</button>
         </form>
         <?php
         check_register_error();

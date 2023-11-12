@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-$name = $lastname = $email = $password = $password_reap = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") { //did the use access this form legitimately
-
+//if ($_SERVER["REQUEST_METHOD"] === "POST") //did the user access this form legitimately
+if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
@@ -55,10 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //did the use access this form legit
         die("Query failed: " . $e->getMessage());
     }
 
-} else {
+} /*else {
     header("Location: ../index.php"); //sends the user there
     die();
-}
+}*/
 
 function check_register_error()
 {

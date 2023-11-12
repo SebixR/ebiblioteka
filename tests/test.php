@@ -1,17 +1,6 @@
 <?php
     include("database_test.php");
 
-    $sql = "INSERT INTO authors(name, last_name)
-            VALUES('Kentaro', 'Miura')"; //auto increment na id działa jak powinien
-
-    try{
-        mysqli_query($conn, $sql);
-        echo "Added";
-    } catch (mysqli_sql_exception $ex){
-        echo"Didn't add";
-    }
-
-
     echo "Hello World <br>";
     echo "Goodbye World <br>";
     $name = "Mike";
@@ -38,7 +27,6 @@
         else echo "Hello {$email}, you are {$age} years old apparently";
     }
 
-    mysqli_close($conn); // phpStorm nie widzi tej zmiennej ale to nie istotne
     ?>
 
 <!DOCTYPE html>
