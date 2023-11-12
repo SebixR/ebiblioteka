@@ -13,3 +13,19 @@ function get_email(object $pdo, string $email)
 
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function set_user(object $pdo, string $name, string $lastname, string $email, string $password) {
+    $query = "INSERT INTO users (name, last_name, email, password) VALUES (:name, :lastname, :email, :password)";
+    $stmt = $pdo->prepare($query);
+
+    $options = [
+        'cost' => 12 //prevents bruteforcing
+    ];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options);
+
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":lastname", $lastname);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":password", $hashed_password);
+    $stmt->execute();
+}

@@ -73,7 +73,7 @@ require_once '../php/register.php';
                     <input type="password" class="textbox" name="password_repeat" placeholder="Password" required>
                 </label>
             </div>
-            <button type="submit" class="register-button">Register</button>
+            <button class="register-button">Register</button>
         </form>
         <?php
         check_register_error();

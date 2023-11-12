@@ -27,3 +27,7 @@ function password_repeated_correctly(string $password, string $password_reap){
     if (strcmp($password, $password_reap) != 0) return true; //returns ture when wrong
     else return false;
 }
+
+function create_user(object $pdo, string $name, string $lastname, string $email, string $password) {
+    set_user($pdo, $name, $lastname, $email, $password);
+}
