@@ -1,41 +1,66 @@
 <?php
-session_start();
 
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'elibrary';
+declare(strict_types=1);
 
-$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+include ("connection.php");
 
-if (mysqli_connect_error()) {
-    exit('Error connecting to databse' . mysqli_connect_error());
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { //did the use access this form legitimately
 
-if (!isset($_POST['name'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['password-repeat'])) {
-    exit('Empty Field(s)');
-}
+    $name = $_POST["name"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $password_reap = $_POST["password_repeat"];
 
-if (empty($_POST['name']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['password-repeat'])){
-    exit('Values Empty');
-}
+    try {
 
-if ($stmt = $conn->prepare('SELECT user_id, password FROM users where name = ?')){
-    $stmt->bind_param('s', $_POST['name']);
-    $stmt->execute();
-    $stmt->store_result();
+        require_once 'connection.php';
+        require_once 'register_model.php';
+        require_once 'register_contr.php'; //the order is important
 
-    if ($stmt = $conn->prepare('INSERT INTO users (name, last_name, password, email) VALUES (?, ?, ?, ?)')) {
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $stmt->bind_param('ssss', $_POST['name'], $_POST['lastname'], $password, $_POST['email']);
-        $stmt->execute();
-        echo 'Successfully Registered';
+        // ERROR HANDLERS
+        $errors = [];
+
+        if (is_input_empty($name, $lastname, $email, $password, $password_reap)) {
+            $errors["empty_input"] = "Fill in all fields!";
+        }
+        if (password_repeated_correctly( $password,  $password_reap)){
+            $errors["password_repeat"] = "Passwords do not match!";
+        }
+        if (is_email_invalid($email)) {
+            $errors["invalid_email"] = "Invalid email used!";
+        }
+        if (is_email_registered($pdo, $email)) {
+            $errors["email_used"] = "Email already registered";
+        }
+
+        require_once 'config_session.php';
+
+        if ($errors) {
+            $_SESSION["error_register"] = $errors;
+            header("Location: ../views/register_view.php");
+            die();
+        }
+
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
     }
-    else {
-        echo 'Register Error';
+
+} else {
+    header("Location: ../index.php"); //sends the user there
+    die();
+}
+
+function check_register_error()
+{
+    if (isset($_SESSION["error_register"])) {
+        $errors = $_SESSION["error_register"];
+
+        echo "<br>";
+        foreach ($errors as $error) {
+            echo '<p class="form-error">' . $error . '</p>';
+        }
+
+        unset($_SESSION["error_register"]); //don't need this data anymore
     }
 }
-$stmt->close();
-
-$conn->close();
-?>

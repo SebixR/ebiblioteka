@@ -1,9 +1,13 @@
 <?php
 
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'elibrary';
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'elibrary';
 
-$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-?>
+try {
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}

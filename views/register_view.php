@@ -1,3 +1,8 @@
+<?php
+require_once '../php/config_session.php'; //we need a session to output the messages
+require_once '../php/register.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +39,8 @@
 
                 window.onclick = function(event) {
                     if (!event.target.matches('.settings')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
+                        const dropdowns = document.getElementsByClassName("dropdown-content");
+                        let i;
                         for (i = 0; i < dropdowns.length; i++) {
                             var openDropdown = dropdowns[i];
                             if (openDropdown.classList.contains('show-dropdown')) {
@@ -50,7 +55,7 @@
 
     <div class="register">
         <h2>Register</h2>
-        <form class="register-form" action="../php/register.php" method="post">
+        <form class="register-form" method="post" action="../php/register.php">
             <div class="register-content">
                 <label>
                     <input type="text" class="textbox" name="name" placeholder="Name" required>
@@ -65,11 +70,14 @@
                     <input type="password" class="textbox" name="password" placeholder="Password" required>
                 </label>
                 <label>
-                    <input type="password" class="textbox" name="password-repeat" placeholder="Password" required>
+                    <input type="password" class="textbox" name="password_repeat" placeholder="Password" required>
                 </label>
             </div>
             <button type="submit" class="register-button">Register</button>
         </form>
+        <?php
+        check_register_error();
+        ?>
         <div class="or-login">
             <hr>
             <span>Already have an account?</span>
