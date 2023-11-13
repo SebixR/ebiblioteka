@@ -14,7 +14,6 @@
   border-radius: 10px;
   height: 500px;
   box-shadow: 0 2px 2px $color-shadow;
-  transition: 1s;
 
   label {
     padding: 6px 8px 6px 16px;
@@ -138,8 +137,4 @@
     border: 1px solid $color-light;
     width: 80%;
   }
-}
-
-.sidenav:hover {
-  box-shadow: none;
 }

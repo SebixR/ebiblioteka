@@ -299,6 +299,21 @@ body {
   box-shadow: 0 2px 2px rgba(61, 36, 16, 0.74);
 }
 
+.error-wrap {
+  margin-top: 4px;
+  background-color: #efdbb8;
+  border-radius: 10px;
+  position: relative;
+  width: 70%;
+  text-align: center;
+  box-shadow: 0 2px 2px rgba(61, 36, 16, 0.74);
+}
+
+.form-error {
+  color: #3d2410;
+  padding: 8px;
+}
+
 @media (max-width: 500px) {
   .login {
     width: 100%;

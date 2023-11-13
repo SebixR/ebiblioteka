@@ -10,7 +10,7 @@ require_once '../php/register.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" type="text/css" href="../css/register.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@ require_once '../php/register.php';
     <header>
         <nav class="topnav">
             <a class="home" href="../index.php">Home</a>
-            <a class="my-books" style="float:right" href="../php/my_books.php">My Books</a>
+            <a class="my-books" style="float:right" href="../views/my_books_view.php">My Books</a>
             <div class="search-wrap">
                 <form>
                     <input type="text" class="search" placeholder="Search">
@@ -73,19 +73,19 @@ require_once '../php/register.php';
                     <input type="password" class="textbox" name="password_repeat" placeholder="Password" required>
                 </label>
             </div>
-            <button type="submit" name="submit" class="register-button">Register</button>
+            <button name="submit" class="register-button">Register</button>
         </form>
-        <?php
-        check_register_error();
-        ?>
         <div class="or-login">
             <hr>
             <span>Already have an account?</span>
-            <a href="../php/login.php">
+            <a href="login_view.php">
                 <button class="login-button">Login</button>
             </a>
         </div>
-
+        <?php
+        check_register_error();
+        ?>
     </div>
+
 </div>
 </body>

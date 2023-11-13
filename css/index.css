@@ -168,7 +168,6 @@ body {
   border-radius: 10px;
   height: 500px;
   box-shadow: 0 2px 2px rgba(61, 36, 16, 0.74);
-  transition: 1s;
 }
 .sidenav label {
   padding: 6px 8px 6px 16px;
@@ -274,10 +273,6 @@ body {
 .sidenav hr {
   border: 1px solid #efdbb8;
   width: 80%;
-}
-
-.sidenav:hover {
-  box-shadow: none;
 }
 
 .main-content {

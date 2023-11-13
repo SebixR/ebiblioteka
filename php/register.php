@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
             $errors["invalid_email"] = "Invalid email used!";
         }
         if (is_email_registered($pdo, $email)) {
-            $errors["email_used"] = "Email already registered";
+            $errors["email_used"] = "Email already registered!";
         }
 
         require_once 'config_session.php';
@@ -58,19 +58,21 @@ if (isset($_POST["submit"])) {
     die();
 }*/
 
-function check_register_error()
+function check_register_error(): void
 {
     if (isset($_SESSION["error_register"])) {
         $errors = $_SESSION["error_register"];
 
         echo "<br>";
         foreach ($errors as $error) {
+            echo '<div class="error-wrap">';
             echo '<p class="form-error">' . $error . '</p>';
+            echo '</div>';
         }
 
         unset($_SESSION["error_register"]); //don't need this data anymore
     } else if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
-        echo 'br';
+        echo '<br>';
         echo '<p class="form-success">Succesfully registered</p>';
     }
 }

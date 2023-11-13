@@ -16,18 +16,20 @@ function is_email_invalid(string $email): bool
     } else return false;
 }
 
-function is_email_registered(object $pdo , string $email)
+function is_email_registered(object $pdo , string $email): bool
 {
     if (get_email($pdo,  $email)) {
         return true;
     } else return false;
 }
 
-function password_repeated_correctly(string $password, string $password_reap){
+function password_repeated_correctly(string $password, string $password_reap): bool
+{
     if (strcmp($password, $password_reap) != 0) return true; //returns ture when wrong
     else return false;
 }
 
-function create_user(object $pdo, string $name, string $lastname, string $email, string $password) {
+function create_user(object $pdo, string $name, string $lastname, string $email, string $password): void
+{
     set_user($pdo, $name, $lastname, $email, $password);
 }
