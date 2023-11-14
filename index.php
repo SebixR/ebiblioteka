@@ -14,12 +14,6 @@ require_once 'php/login.php'
 </head>
 <body>
 
-<h3>
-    <?php
-    output_name();
-    ?>
-</h3>
-
 <div class="main">
     <header>
         <nav class="topnav">
@@ -190,7 +184,6 @@ require_once 'php/login.php'
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="row">
