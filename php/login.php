@@ -41,6 +41,7 @@ if (isset($_POST["submit"])) { //same thing as with registration
         session_id($sessionId);
 
         $_SESSION["user_id"] = $result["user_id"];
+        $_SESSION["user_name"] = $result["name"];
 
         $_SESSION["last_regeneration"] = time(); //reset the time
 
@@ -53,6 +54,15 @@ if (isset($_POST["submit"])) { //same thing as with registration
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
+    }
+}
+
+function output_name()
+{
+    if (isset($_SESSION["user_id"])) { //if there's a user id that means we're logged in
+        echo "You are logged in as " . $_SESSION["user_name"];
+    } else {
+        echo "You are not logged in";
     }
 }
 
