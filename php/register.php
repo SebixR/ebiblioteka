@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 //if ($_SERVER["REQUEST_METHOD"] === "POST") //did the user access this form legitimately
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["name"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];

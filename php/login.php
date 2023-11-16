@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-if (isset($_POST["submit"])) { //same thing as with registration
+if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same thing as with registration
 
     $email = $_POST["email"];
     $password = $_POST["password"];
