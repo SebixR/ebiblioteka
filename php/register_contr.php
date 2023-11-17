@@ -29,6 +29,18 @@ function password_repeated_correctly(string $password, string $password_reap): b
     else return false;
 }
 
+function password_complexity_met(string $password): bool
+{
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+
+    if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+        return false;
+    }
+    else return true;
+}
+
 function create_user(object $pdo, string $name, string $lastname, string $email, string $password): void
 {
     set_user($pdo, $name, $lastname, $email, $password);

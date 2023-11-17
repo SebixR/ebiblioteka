@@ -25,6 +25,9 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         if (password_repeated_correctly($password, $password_reap)) {
             $errors["password_repeat"] = "Passwords do not match!";
         }
+        if (!password_complexity_met($password)) {
+            $errors["password_complexity"] = "Password should include an uppercase character and a number, and should be at least 8 characters long";
+        }
         if (is_email_invalid($email)) {
             $errors["invalid_email"] = "Invalid email used!";
         }
