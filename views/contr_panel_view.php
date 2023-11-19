@@ -26,9 +26,10 @@ require_once '../php/config_session.php';
                 <input type="text" placeholder="Genre" name="add-genre">
                 <button name="submit-genre" type="submit">Add Genre</button>
             </form>
-            <form class="panel-left-section">
-                <input type="text" placeholder="Author">
-                <button>Add Author</button>
+            <form class="panel-left-section" action="../php/contr_panel.php" method="post">
+                <input type="text" placeholder="Author's Name" name="add-name">
+                <input type="text" placeholder="Author's Last Name" name="add-lastname">
+                <button name="submit-author" type="submit">Add Author</button>
             </form>
             <form class="panel-left-section">
                 <input type="text" placeholder="Publisher">
@@ -39,7 +40,8 @@ require_once '../php/config_session.php';
         <form class="panel-right">
             <div class="panel-right-half">
                 <input class="small-input" type="text" placeholder="Title">
-                <input class="small-input" type="text" placeholder="Author">
+                <input class="small-input" type="text" placeholder="Author's Name">
+                <input class="small-input" type="text" placeholder="Author's Last Name">
                 <input class="small-input" type="text" placeholder="Release Date">
                 <input class="small-input" type="text" placeholder="Publisher">
                 <input class="small-input" type="text" placeholder="Purchase Price">
