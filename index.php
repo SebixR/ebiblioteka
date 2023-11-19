@@ -1,6 +1,5 @@
 <?php
 require_once 'php/config_session.php';
-require_once 'php/login.php'
 ?>
 
 <!DOCTYPE html>

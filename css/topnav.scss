@@ -35,7 +35,6 @@
   }
 
   input:focus {
-    outline: $color-light solid 1.5px;
     background-color: $color-light;
   }
 
@@ -96,6 +95,7 @@
     text-align: left;
     margin: 4px;
     padding: 8px;
+    font-size: 16px;
 
     background-size: 200% 100%;
     background-image: linear-gradient(to right, $color-light 50%, $color-main 50%);
