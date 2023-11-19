@@ -14,6 +14,7 @@
   border-radius: 10px;
   height: 500px;
   box-shadow: 0 2px 2px $color-shadow;
+  user-select: none;
 
   label {
     padding: 6px 8px 6px 16px;
@@ -49,6 +50,9 @@
   .list-wrap {
     height: 80%;
     overflow-x: hidden;
+    scrollbar-color: $color-light $color-main;
+    scrollbar-width: thin;
+
   }
 
   .genre-list {
@@ -123,12 +127,14 @@
 
   .author-wrap {
     height: 20%;
+    padding: 8px;
     position: relative;
     display: block;
   }
 
   .publisher-wrap {
     height: 20%;
+    padding: 8px;
     position: relative;
     display: block;
   }

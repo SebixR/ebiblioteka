@@ -7,20 +7,23 @@
   font-family: "Times New Roman", serif;
 }
 
+
 body {
   background: $color-background;
   height: 100%;
+  overflow: auto;
 }
 
 .main {
   max-width: 2000px;
   margin: auto;
+  user-select: none;
 }
 
 @import "topnav";
 
 .slider-wrap {
- width: 100%;
+  width: 100%;
   position: relative;
   padding: 8px;
   margin: auto;
@@ -163,9 +166,12 @@ p {
 }
 
 @media (max-width: 800px) {
-  .sidenav, .main-content, .main {
+  .main-content, .main {
     width: 100%;
     height: auto;
+  }
+  .sidenav {
+    width: 100%;
   }
   .row {
     flex-direction: column;

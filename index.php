@@ -11,6 +11,7 @@ require_once 'php/login.php'
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 
@@ -34,7 +35,7 @@ require_once 'php/login.php'
             <?php
             if (isset($_SESSION["user_id"])) { ?>
                 <div class="dropdown" onclick="dropDown()">
-                    <button class="settings">Test</button>
+                    <button class="settings"></button>
                     <div class="dropdown-content" id="dropdown">
                         <a href="#">
                             <button class="settings-button">Settings</button>
@@ -63,9 +64,35 @@ require_once 'php/login.php'
                     }
                 </script>
             <?php } else { ?>
-                <a href="views/login_view.php">
-                    <button class="log-in-button">Log in</button>
-                </a>
+                <div class="dropdown" onclick="dropDown()">
+                    <button class="settings"></button>
+                    <div class="dropdown-content" id="dropdown">
+                        <a href="views/register_view.php">
+                            <button class="settings-button">Register</button>
+                        </a>
+                        <a href="views/login_view.php">
+                            <button class="settings-button">Log in</button>
+                        </a>
+                    </div>
+                </div>
+                <script>
+                    function dropDown() {
+                        document.getElementById("dropdown").classList.toggle("show-dropdown");
+                    }
+
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.settings')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('show-dropdown')) {
+                                    openDropdown.classList.remove('show-dropdown');
+                                }
+                            }
+                        }
+                    }
+                </script>
             <?php }
             ?>
         </nav>
