@@ -71,6 +71,63 @@ require_once 'php/login.php'
         </nav>
     </header>
 
+    <div class="slider-wrap">
+        <div class="my-slides">
+            <img src="images/banner.jpg" class="slide-img fade">
+        </div>
+
+        <div class="my-slides">
+            <img src="images/banner1.jpg" class="slide-img fade">
+        </div>
+
+        <div class="my-slides">
+            <img src="images/banner.jpg" class="slide-img fade">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-2)">&#10094;</a>
+        <a class="next" onclick="plusSlides(0)">&#10095;</a>
+    </div>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+
+        <script>
+            let slideIndex = 1;
+            showSlides();
+            let timer = setInterval(showSlides, 5000);
+
+            function plusSlides(n) {
+                clearInterval(timer);
+                timer = setInterval(showSlides, 5000);
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                clearInterval(timer);
+                timer = setInterval(showSlides, 5000);
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("my-slides");
+                let dots = document.getElementsByClassName("dot");
+                if (slideIndex > slides.length) {slideIndex = 1}
+                if (slideIndex < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "flex";
+                dots[slideIndex - 1].className += " active";
+                slideIndex++;
+            }
+        </script>
+    </div>
+
     <section>
         <nav class="sidenav">
             <div class="genre-wrap">
