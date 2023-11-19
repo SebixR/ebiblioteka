@@ -130,6 +130,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+.topnav .settings:hover {
+  background-color: #efdbb8;
+}
 .topnav .home {
   float: left;
   display: block;

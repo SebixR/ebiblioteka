@@ -133,6 +133,10 @@
     background-position: center;
   }
 
+  .settings:hover {
+    background-color: $color-light;
+  }
+
   .home {
     float: left;
     display: block;

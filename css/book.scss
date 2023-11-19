@@ -16,6 +16,7 @@ body {
   justify-content: center;
   position: relative;
   height: 100%;
+  user-select: none;
 }
 
 @import "topnav";
@@ -48,12 +49,6 @@ body {
     border-radius: 10px;
     box-shadow: -2px 2px 2px $color-shadow;
     transition: 1s;
-  }
-
-  .cover:hover {
-    transform: scale(1.02, 1.02);
-    border: $color-background solid 5px;
-    box-shadow: none;
   }
 }
 
