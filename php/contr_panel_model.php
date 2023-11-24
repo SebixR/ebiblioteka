@@ -18,3 +18,11 @@ function add_author(object $pdo, string $name, String $lastname)
     $stmt->bindParam(":lastname", $lastname);
     $stmt->execute();
 }
+
+function add_publisher(object $pdo, string $publisher)
+{
+    $query = "INSERT INTO publishers (name) VALUES (:name)";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":name", $publisher);
+    $stmt->execute();
+}

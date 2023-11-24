@@ -31,13 +31,13 @@ require_once '../php/config_session.php';
                 <input type="text" placeholder="Author's Last Name" name="add-lastname">
                 <button name="submit-author" type="submit">Add Author</button>
             </form>
-            <form class="panel-left-section">
-                <input type="text" placeholder="Publisher">
-                <button>Add Publisher</button>
+            <form class="panel-left-section" action="../php/contr_panel.php" method="post">
+                <input type="text" placeholder="Publisher" name="add-publisher">
+                <button name="submit-publisher" type="submit">Add Publisher</button>
             </form>
         </div>
 
-        <form class="panel-right">
+        <form class="panel-right" enctype="multipart/form-data" action="../php/contr_panel.php" method="post">
             <div class="panel-right-half">
                 <input class="small-input" type="text" placeholder="Title">
                 <input class="small-input" type="text" placeholder="Author's Name">
@@ -47,11 +47,11 @@ require_once '../php/config_session.php';
                 <input class="small-input" type="text" placeholder="Purchase Price">
                 <input class="small-input" type="text" placeholder="Borrow Price">
                 <input class="small-input" type="text" placeholder="Page Number">
-                <input class="small-input" type="text" placeholder="Cover">
             </div>
             <div class="panel-right-half">
+                <input class="small-input" type="file" name="choosefile" value="" placeholder="Cover">
                 <textarea maxlength="250" class="summary">Summary goes here</textarea>
-                <button type="submit">Add Book</button>
+                <button type="submit" name="submit-book">Add Book</button>
             </div>
         </form>
     </div>
