@@ -41,8 +41,39 @@ require_once '../php/config_session.php';
             <div class="panel-right-half">
                 <input class="small-input" type="text" name="title" placeholder="Title">
                 <div class="add-authors">
-                    <input class="small-input" type="text" name="name" placeholder="Author's Name">
-                    <input class="small-input" type="text" name="lastname" placeholder="Author's Last Name">
+                    <div id="parent">
+                        <div class="author-data" id="author-data">
+                            <input class="small-input" type="text" name="authors[0][name]" placeholder="Author's Name">
+                            <input class="small-input" type="text" name="authors[0][lastname]" placeholder="Author's Last Name">
+                        </div>
+                    </div>
+
+                    <button class="add-author-button" type="button" onclick="add_author()">+</button>
+                    <button class="remove-author-button" type="button" onclick="remove_author()">-</button>
+
+                    <script>
+                        let counter = 1;
+                        function add_author(){
+                            let parent = document.querySelector('#parent');
+                            let elem = parent.querySelector('.author-data');
+
+                            let clone = elem.cloneNode(true);
+                            clone.children[0].name = "authors[" + counter + "][name]";
+                            clone.children[1].name = "authors[" + counter + "][lastname]"
+                            counter++;
+                            parent.appendChild(clone);
+                        }
+
+                        function remove_author(){
+                            const elem = document.getElementById("parent");
+                            if (elem.childElementCount > 1)
+                            {
+                                elem.removeChild(elem.lastChild)
+                                counter--;
+                            }
+                        }
+                    </script>
+
                 </div>
                 <input class="small-input" type="text" name="date" placeholder="Release Date">
                 <input class="small-input" type="text" name="publisher" placeholder="Publisher">
@@ -51,7 +82,10 @@ require_once '../php/config_session.php';
                 <input class="small-input" type="text" name="pages" placeholder="Page Number">
             </div>
             <div class="panel-right-half">
-                <input class="small-input" type="file" name="choosefile" value="" placeholder="Cover">
+                <label class="file-input">
+                    <input type="file" name="choosefile" value="" placeholder="Cover">
+                    Upload Cover Image
+                </label>
                 <textarea maxlength="250" class="summary" name="summary">Summary goes here</textarea>
                 <button type="submit" name="submit-book">Add Book</button>
             </div>

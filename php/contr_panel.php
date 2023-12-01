@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $title = $_POST["title"];
-    $name = $_POST["name"];
-    $lastname = $_POST["lastname"];
+    $authors = (array)$_POST["authors"];
     $date = $_POST["date"];
     $publisher = $_POST["publisher"];
-    $purchase = $_POST["purchase"];
-    $borrow = $_POST["borrow"];
-    $pages = $_POST["pages"];
+    $purchase = (float)$_POST["purchase"];
+    $borrow = (float)$_POST["borrow"];
+    $pages = (int)$_POST["pages"];
     $summary = $_POST["summary"];
 
     $filename = $_FILES["choosefile"]["name"]; //choosefile - name w inpucie
     $tempname = $_FILES["choosefile"]["tmp_name"];
     $folder = "../images/".$filename;
-
-    $authors = [];
 
     try {
         require_once 'connection.php';
@@ -32,6 +29,8 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
             $msg = "Failed to upload image";
         }
     }  catch (PDOException $e) {
+        var_dump($authors);
+
         die("Query failed: " . $e->getMessage());
     }
 

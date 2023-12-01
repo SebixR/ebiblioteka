@@ -128,11 +128,72 @@ body {
         background-color: $color-light;
       }
 
+      input[type='file'] {
+        display: none;
+      }
+      .file-input {
+        color: $color-dark;
+        width: 80%;
+        height: 45px;
+        margin: 16px;
+        outline: $color-light solid 1.5px;
+        border-radius: 10px;
+        padding: 4px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .file-input:hover {
+        background-color: $color_light;
+      }
+
       .add-authors {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        scrollbar-color: $color-light $color-main;
+        scrollbar-width: thin;
+        width: 80%;
+        height: 25%;
+        outline: $color-light solid 1.5px;
+        border-radius: 10px;
+        overflow-x: hidden;
+        display: block;
+
+        .author-data {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .small-input {
+          margin: 8px;
+        }
+
+        .add-author-button{
+          width: 30px;
+          height: 30px;
+          margin-top: 16px;
+          margin-bottom: 16px;
+          margin-left: 40px;
+          padding: 4px;
+          position: relative;
+          float: left;
+          color: $color-dark;
+          font-weight: bold;
+        }
+
+        .remove-author-button{
+          width: 30px;
+          height: 30px;
+          margin-top: 16px;
+          margin-bottom: 16px;
+          margin-right: 40px;
+          padding: 4px;
+          position: relative;
+          float: right;
+          color: $color-dark;
+          font-weight: bold;
+        }
       }
 
       .summary {

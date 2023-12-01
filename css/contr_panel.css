@@ -274,6 +274,67 @@ body {
 .panels-wrap .panel-right .panel-right-half .small-input:focus {
   background-color: #efdbb8;
 }
+.panels-wrap .panel-right .panel-right-half input[type=file] {
+  display: none;
+}
+.panels-wrap .panel-right .panel-right-half .file-input {
+  color: #3d2410;
+  width: 80%;
+  height: 45px;
+  margin: 16px;
+  outline: #efdbb8 solid 1.5px;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.panels-wrap .panel-right .panel-right-half .file-input:hover {
+  background-color: #efdbb8;
+}
+.panels-wrap .panel-right .panel-right-half .add-authors {
+  scrollbar-color: #efdbb8 #DBB280;
+  scrollbar-width: thin;
+  width: 80%;
+  height: 25%;
+  outline: #efdbb8 solid 1.5px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  display: block;
+}
+.panels-wrap .panel-right .panel-right-half .add-authors .author-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.panels-wrap .panel-right .panel-right-half .add-authors .small-input {
+  margin: 8px;
+}
+.panels-wrap .panel-right .panel-right-half .add-authors .add-author-button {
+  width: 30px;
+  height: 30px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 40px;
+  padding: 4px;
+  position: relative;
+  float: left;
+  color: #3d2410;
+  font-weight: bold;
+}
+.panels-wrap .panel-right .panel-right-half .add-authors .remove-author-button {
+  width: 30px;
+  height: 30px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-right: 40px;
+  padding: 4px;
+  position: relative;
+  float: right;
+  color: #3d2410;
+  font-weight: bold;
+}
 .panels-wrap .panel-right .panel-right-half .summary {
   width: 80%;
   height: 40%;
