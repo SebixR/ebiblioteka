@@ -2,6 +2,14 @@
 
 require_once "connection.php";
 
+function add_book(object $pdo, string $title, array $authors, string $date, string $publisher, float $purchase, float $borrow, int $pages, string $summary, string $filename)
+{
+    $query = "INSERT INTO books (cover_img) VALUES (:filename)";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":filename", $filename);
+    $stmt->execute();
+}
+
 function add_genre(object $pdo, string $genre)
 {
     $query = "INSERT INTO genres (name) VALUES (:name)";

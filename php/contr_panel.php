@@ -3,8 +3,38 @@
 declare(strict_types=1);
 
 if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+    $title = $_POST["title"];
+    $name = $_POST["name"];
+    $lastname = $_POST["lastname"];
+    $date = $_POST["date"];
+    $publisher = $_POST["publisher"];
+    $purchase = $_POST["purchase"];
+    $borrow = $_POST["borrow"];
+    $pages = $_POST["pages"];
+    $summary = $_POST["summary"];
+
     $filename = $_FILES["choosefile"]["name"]; //choosefile - name w inpucie
-    //https://www.simplilearn.com/tutorials/php-tutorial/image-upload-in-php
+    $tempname = $_FILES["choosefile"]["tmp_name"];
+    $folder = "../images/".$filename;
+
+    $authors = [];
+
+    try {
+        require_once 'connection.php';
+        require_once 'contr_panel_model.php';
+
+        add_book($pdo, $title, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename);
+
+        if (move_uploaded_file($tempname, $folder)){
+            $msg = "Image uploaded successfully";
+        }
+        else {
+            $msg = "Failed to upload image";
+        }
+    }  catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+
 }
 
 if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
