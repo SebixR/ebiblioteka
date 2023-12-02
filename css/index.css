@@ -330,7 +330,7 @@ body {
   outline: #efdbb8 solid 1.5px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition: background-color 0.2s;
 }
 .sidenav .genre-list label:hover .genre-check ~ .checkmark {
   background-color: #efdbb8;

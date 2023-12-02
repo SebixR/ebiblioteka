@@ -147,20 +147,7 @@ body {
   box-shadow: 0 2px 2px $color-shadow;
 }
 
-.error-wrap {
-  margin-top: 4px;
-  background-color: $color-light;
-  border-radius: 10px;
-  position: relative;
-  width: 70%;
-  text-align: center;
-  box-shadow: 0 2px 2px $color-shadow;
-}
-
-.form-error {
-  color: $color-dark;
-  padding: 8px;
-}
+@import "notification";
 
 @media (max-width: 800px) {
   .register {

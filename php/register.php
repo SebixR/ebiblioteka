@@ -67,8 +67,8 @@ function check_register_error(): void
 
         echo "<br>";
         foreach ($errors as $error) {
-            echo '<div class="error-wrap">';
-            echo '<p class="form-error">' . $error . '</p>';
+            echo '<div class="notification-wrap">';
+            echo '<p class="notification">' . $error . '</p>';
             echo '</div>';
         }
 
