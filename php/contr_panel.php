@@ -13,7 +13,7 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $pages = (int)$_POST["pages"];
     $summary = $_POST["summary"];
 
-    $filename = $_FILES["choosefile"]["name"]; //choosefile - name w inpucie
+    $filename = $_FILES["choosefile"]["name"]; //choosefile - name in the input
     $tempname = $_FILES["choosefile"]["tmp_name"];
     $folder = "../images/".$filename;
 
@@ -24,7 +24,6 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'contr_panel_model.php';
         require_once 'contr_panel_contr.php';
 
-        //TODO we won't need to check genres because we're going to get them form the database
         if (is_input_empty($title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename)){
             $book_errors["empty_input"] = "Some fields were left empty.";
         }
@@ -51,7 +50,7 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         add_book($pdo, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename);
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         echo '<div class="notification-wrap">';
         echo '<p class="notification">Succesfully added book.</p>';
         echo '</div>';
@@ -75,7 +74,7 @@ function check_add_error(): void
             echo '</div>';
         }
 
-        unset($_SESSION["error_add_book"]); //don't need this data anymore
+        unset($_SESSION["error_add_book"]);
     }
 }
 
@@ -87,7 +86,7 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'contr_panel_model.php';
 
         if (empty($genre)){
-            header("Location: ../views/contr_panel_view.php"); //sends the user there
+            header("Location: ../views/contr_panel_view.php");
             die();
         }
 
@@ -96,7 +95,7 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -155,7 +154,7 @@ function check_delete_genre_error(): void
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_genre"]); //don't need this data anymore
+        unset($_SESSION["error_delete_genre"]);
     }
 }
 
@@ -170,7 +169,7 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'contr_panel_model.php';
 
         if (empty($name) || empty($lastname)){
-            header("Location: ../views/contr_panel_view.php"); //sends the user there
+            header("Location: ../views/contr_panel_view.php");
             die();
         }
 
@@ -179,7 +178,7 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -220,7 +219,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -238,7 +237,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_author"]); //don't need this data anymore
+        unset($_SESSION["error_delete_author"]);
     }
 }
 
@@ -251,7 +250,7 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         require_once 'contr_panel_model.php';
 
         if (empty($publisher)) {
-            header("Location: ../views/contr_panel_view.php"); //sends the user there
+            header("Location: ../views/contr_panel_view.php");
             die();
         }
 
@@ -260,7 +259,7 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -300,7 +299,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php"); //sends the user there
+        header("Location: ../views/contr_panel_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -318,7 +317,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_publisher"]); //don't need this data anymore
+        unset($_SESSION["error_delete_publisher"]);
     }
 }
 
