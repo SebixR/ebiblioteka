@@ -59,11 +59,8 @@ function add_book(object $pdo, string $title, array $genres, array $authors, str
     }
 
     //bind book with its genres
-    $counter = 0;
     foreach ($genres as $genre)
     {
-        if ($counter >= 10) break;
-
         //find genre in the genres table
         $query_author = "SELECT genre_id FROM genres WHERE name = :name";
         $stmt = $pdo->prepare($query_author);
@@ -86,8 +83,6 @@ function add_book(object $pdo, string $title, array $genres, array $authors, str
         $stmt->bindParam(":book_id", $book_id);
         $stmt->bindParam(":genre_id", $genre_id);
         $stmt->execute();
-
-        $counter++;
     }
 }
 
