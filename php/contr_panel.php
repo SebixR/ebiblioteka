@@ -25,7 +25,7 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'contr_panel_contr.php';
 
         if (is_input_empty($title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename)){
-            $book_errors["empty_input"] = "Some fields were left empty.";
+            $book_errors["empty_input"] = "Some fields are empty.";
         }
         if (check_authors($pdo, $authors)){
             $book_errors["missing_author"] = "No such author in the database.";
@@ -61,7 +61,6 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 }
-
 function check_add_error(): void
 {
     if (isset($_SESSION["error_add_book"])) {
@@ -78,14 +77,29 @@ function check_add_error(): void
     }
 }
 
+
+
 if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $genre = $_POST["add-genre"];
+
+    $genre_errors = [];
 
     try {
         require_once 'connection.php';
         require_once 'contr_panel_model.php';
+        require_once 'contr_panel_contr.php';
 
         if (empty($genre)){
+            $genre_errors["empty_input"] = "Field is empty.";
+        }
+        else if (check_duplicate_genre($pdo, $genre)){
+            $genre_errors["duplicate_genre"] = "Genre is already in the database.";
+        }
+
+        require_once 'config_session.php';
+
+        if ($genre_errors) {
+            $_SESSION["error_genre"] = $genre_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -125,7 +139,7 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'config_session.php';
 
         if ($genre_errors) {
-            $_SESSION["error_delete_genre"] = $genre_errors;
+            $_SESSION["error_genre"] = $genre_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -142,10 +156,10 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         die("Query failed: " . $e->getMessage());
     }
 }
-function check_delete_genre_error(): void
+function check_genre_error(): void
 {
-    if (isset($_SESSION["error_delete_genre"])) {
-        $errors = $_SESSION["error_delete_genre"];
+    if (isset($_SESSION["error_genre"])) {
+        $errors = $_SESSION["error_genre"];
 
         echo "<br>";
         foreach ($errors as $error) {
@@ -154,7 +168,7 @@ function check_delete_genre_error(): void
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_genre"]);
+        unset($_SESSION["error_genre"]);
     }
 }
 
@@ -164,11 +178,24 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["add-name"];
     $lastname = $_POST["add-lastname"];
 
+    $author_errors = [];
+
     try {
         require_once 'connection.php';
         require_once 'contr_panel_model.php';
+        require_once 'contr_panel_contr.php';
 
         if (empty($name) || empty($lastname)){
+            $author_errors["empty_input"] = "Some fields are empty.";
+        }
+        else if (check_duplicate_author($pdo, $name, $lastname)){
+            $author_errors["duplicate_author"] = "Author is already in the database.";
+        }
+
+        require_once 'config_session.php';
+
+        if ($author_errors) {
+            $_SESSION["error_author"] = $author_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -197,7 +224,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'contr_panel_contr.php';
 
         if (empty($name) || empty($lastname)) {
-            $author_errors["empty_input"] = "Some fields were empty.";
+            $author_errors["empty_input"] = "Some fields are empty.";
         }
         else if (check_author($pdo, $name, $lastname)){
             $author_errors["missing_author"] = "No such author in the database.";
@@ -209,7 +236,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'config_session.php';
 
         if ($author_errors) {
-            $_SESSION["error_delete_author"] = $author_errors;
+            $_SESSION["error_author"] = $author_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -225,10 +252,10 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-}function check_delete_author_error(): void
+}function check_author_error(): void
 {
-    if (isset($_SESSION["error_delete_author"])) {
-        $errors = $_SESSION["error_delete_author"];
+    if (isset($_SESSION["error_author"])) {
+        $errors = $_SESSION["error_author"];
 
         echo "<br>";
         foreach ($errors as $error) {
@@ -237,7 +264,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_author"]);
+        unset($_SESSION["error_author"]);
     }
 }
 
@@ -245,11 +272,30 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $publisher = $_POST["add-publisher"];
 
+    $publisher_errors = [];
+
     try {
         require_once 'connection.php';
         require_once 'contr_panel_model.php';
+        require_once 'contr_panel_contr.php';
 
         if (empty($publisher)) {
+            $publisher_errors["empty_input"] = "Field is empty.";
+        }
+
+        require_once 'config_session.php';
+
+        if ($publisher_errors) {
+            $_SESSION["error_publisher"] = $publisher_errors;
+        }
+        else if (check_duplicate_publisher($pdo, $publisher)){
+            $publisher_errors["duplicate_publisher"] = "Publisher is already in the database.";
+        }
+
+        require_once 'config_session.php';
+
+        if ($publisher_errors) {
+            $_SESSION["error_publisher"] = $publisher_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -289,7 +335,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         require_once 'config_session.php';
 
         if ($publisher_errors) {
-            $_SESSION["error_delete_publisher"] = $publisher_errors;
+            $_SESSION["error_publisher"] = $publisher_errors;
             header("Location: ../views/contr_panel_view.php");
             die();
         }
@@ -305,10 +351,10 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-}function check_delete_publisher_error(): void
+}function check_publisher_error(): void
 {
-    if (isset($_SESSION["error_delete_publisher"])) {
-        $errors = $_SESSION["error_delete_publisher"];
+    if (isset($_SESSION["error_publisher"])) {
+        $errors = $_SESSION["error_publisher"];
 
         echo "<br>";
         foreach ($errors as $error) {
@@ -317,7 +363,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
             echo '</div>';
         }
 
-        unset($_SESSION["error_delete_publisher"]);
+        unset($_SESSION["error_publisher"]);
     }
 }
 

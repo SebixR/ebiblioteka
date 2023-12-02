@@ -27,6 +27,12 @@ function check_genre_connections(object $pdo, string $genre): bool
     else return false;
 }
 
+function check_duplicate_genre(object $pdo, string $genre): bool
+{
+    if (find_duplicate_genre($pdo, $genre)) return false;
+    else return true;
+}
+
 
 function check_author(object $pdo, string $name, string $lastname): bool
 {
@@ -40,6 +46,12 @@ function check_author_connections(object $pdo, string $name, string $lastname): 
     else return false;
 }
 
+function check_duplicate_author(object $pdo, string $name, string $lastname): bool
+{
+    if (find_duplicate_author($pdo, $name, $lastname)) return false;
+    else return true;
+}
+
 function check_publisher(object $pdo, string $publisher): bool
 {
     if (find_publisher($pdo, $publisher)) return false;
@@ -50,4 +62,10 @@ function check_publisher_connections(object $pdo, string $publisher): bool
 {
     if (find_publisher_connections($pdo, $publisher)) return true;
     else return false;
+}
+
+function check_duplicate_publisher(object $pdo, string $publisher): bool
+{
+    if (find_duplicate_publisher($pdo, $publisher)) return false;
+    else return true;
 }

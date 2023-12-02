@@ -28,7 +28,7 @@ require_once '../php/contr_panel.php';
                 <button name="submit-genre" type="submit">Add Genre</button>
                 <button name="delete-genre" type="submit">Delete Genre</button>
                 <?php
-                check_delete_genre_error();
+                check_genre_error();
                 ?>
             </form>
             <form class="panel-left-section" action="../php/contr_panel.php" method="post">
@@ -37,7 +37,7 @@ require_once '../php/contr_panel.php';
                 <button name="submit-author" type="submit">Add Author</button>
                 <button name="delete-author" type="submit">Delete Author</button>
                 <?php
-                check_delete_author_error();
+                check_author_error();
                 ?>
             </form>
             <form class="panel-left-section" action="../php/contr_panel.php" method="post">
@@ -45,7 +45,7 @@ require_once '../php/contr_panel.php';
                 <button name="submit-publisher" type="submit">Add Publisher</button>
                 <button name="delete-publisher" type="submit">Delete Publisher</button>
                 <?php
-                check_delete_publisher_error();
+                check_publisher_error();
                 ?>
             </form>
 

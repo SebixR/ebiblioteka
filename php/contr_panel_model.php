@@ -163,6 +163,18 @@ function find_genre_connections(object $pdo, string $genre): bool
     return false;
 }
 
+function find_duplicate_genre(object $pdo, string $genre): bool
+{
+    $query = "SELECT * FROM genres WHERE name = :genre";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":genre", $genre);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) return false;
+    else return true;
+}
+
 function find_publisher_connections(object $pdo, string $publisher): bool
 {
     //get the publisher's id
@@ -184,6 +196,18 @@ function find_publisher_connections(object $pdo, string $publisher): bool
         else return false;
     }
     return false;
+}
+
+function find_duplicate_publisher(object $pdo, string $publisher): bool
+{
+    $query = "SELECT * FROM publishers WHERE name = :publisher";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":publisher", $publisher);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) return false;
+    else return true;
 }
 
 function find_author_connections($pdo, $name, $lastname): bool
@@ -208,6 +232,19 @@ function find_author_connections($pdo, $name, $lastname): bool
         else return false;
     }
     return false;
+}
+
+function find_duplicate_author(object $pdo, string $name, string $lastname): bool
+{
+    $query = "SELECT * FROM authors WHERE name = :name AND last_name = :lastname";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":lastname", $lastname);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) return false;
+    else return true;
 }
 
 function fetch_genres(object $pdo)
