@@ -10,7 +10,7 @@ require_once '../php/contr_panel.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Control Panel</title>
-    <link rel="stylesheet" href="../css/contr_panel.css?15">
+    <link rel="stylesheet" href="../css/contr_panel.css">
 </head>
 <body>
 
@@ -20,6 +20,12 @@ require_once '../php/contr_panel.php';
         require_once '../php/topnav.php';
         ?>
     </header>
+
+    <div class="control-panel-menu">
+        <a class="panel-menu-button" href="#">View Books</a>
+        <a class="panel-menu-button-active" href="contr_panel_view.php">Add Entry</a>
+        <a class="panel-menu-button" href="#" style="float:right">View Users</a>
+    </div>
 
     <div class="panels-wrap">
         <div class="panel-left">
