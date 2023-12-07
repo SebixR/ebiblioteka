@@ -171,6 +171,12 @@ body {
   background-position: 100% 0;
 }
 
+.main {
+  max-width: 2000px;
+  margin: auto;
+  user-select: none;
+}
+
 .control-panel-menu {
   display: inline-block;
   position: relative;
@@ -393,7 +399,7 @@ body {
 .panels-wrap .panel-right .panel-right-half .genre-wrap .genre-list .genre-check:checked ~ .checkmark:after {
   display: block;
 }
-.panels-wrap .panel-right .panel-right-half .genre-wrap .genre-list .genre-list .checkmark:after {
+.panels-wrap .panel-right .panel-right-half .genre-wrap .genre-list .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -536,4 +542,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=contr_panel.css.map */
+/*# sourceMappingURL=contr_panel_add.css.map */

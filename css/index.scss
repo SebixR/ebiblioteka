@@ -14,11 +14,7 @@ body {
   overflow: auto;
 }
 
-.main {
-  max-width: 2000px;
-  margin: auto;
-  user-select: none;
-}
+@import "main";
 
 @import "topnav";
 

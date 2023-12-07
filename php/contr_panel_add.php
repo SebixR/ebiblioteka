@@ -21,8 +21,8 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (is_input_empty($title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename)){
             $book_errors["empty_input"] = "Some fields are empty.";
@@ -44,13 +44,13 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($book_errors) {
             $_SESSION["error_add_book"] = $book_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
         add_book($pdo, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename);
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         echo '<div class="notification-wrap">';
         echo '<p class="notification">Succesfully added book.</p>';
         echo '</div>';
@@ -86,8 +86,8 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($genre)){
             $genre_errors["empty_input"] = "Field is empty.";
@@ -100,7 +100,7 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($genre_errors) {
             $_SESSION["error_genre"] = $genre_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -109,7 +109,7 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -123,8 +123,8 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($genre)) {
             $genre_errors["empty_input"] = "Field is empty.";
@@ -140,7 +140,7 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($genre_errors) {
             $_SESSION["error_genre"] = $genre_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -149,7 +149,7 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -182,8 +182,8 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($name) || empty($lastname)){
             $author_errors["empty_input"] = "Some fields are empty.";
@@ -196,7 +196,7 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($author_errors) {
             $_SESSION["error_author"] = $author_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -205,7 +205,7 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -220,8 +220,8 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($name) || empty($lastname)) {
             $author_errors["empty_input"] = "Some fields are empty.";
@@ -237,7 +237,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($author_errors) {
             $_SESSION["error_author"] = $author_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -246,7 +246,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -276,8 +276,8 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($publisher)) {
             $publisher_errors["empty_input"] = "Field is empty.";
@@ -296,7 +296,7 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
         if ($publisher_errors) {
             $_SESSION["error_publisher"] = $publisher_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -305,7 +305,7 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -319,8 +319,8 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
     try {
         require_once 'connection.php';
-        require_once 'contr_panel_model.php';
-        require_once 'contr_panel_contr.php';
+        require_once 'contr_panel_add_model.php';
+        require_once 'contr_panel_add_contr.php';
 
         if (empty($publisher)) {
             $publisher_errors["empty_input"] = "Field is empty.";
@@ -336,7 +336,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
         if ($publisher_errors) {
             $_SESSION["error_publisher"] = $publisher_errors;
-            header("Location: ../views/contr_panel_view.php");
+            header("Location: ../views/contr_panel_add_view.php");
             die();
         }
 
@@ -345,7 +345,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../views/contr_panel_view.php");
+        header("Location: ../views/contr_panel_add_view.php");
         die();
 
     } catch (PDOException $e) {
@@ -370,7 +370,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 function get_genres(): void
 {
     require_once "connection.php";
-    require_once "contr_panel_model.php";
+    require_once "contr_panel_add_model.php";
 
     $stmt = fetch_genres($pdo);
     if ($stmt){

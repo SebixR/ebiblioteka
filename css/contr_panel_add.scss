@@ -16,6 +16,8 @@ body {
 
 @import "topnav";
 
+@import "main";
+
 .control-panel-menu {
   display: inline-block;
   position: relative;
@@ -262,7 +264,7 @@ body {
             display: block;
           }
 
-          .genre-list .checkmark:after {
+          .checkmark:after {
             left: 9px;
             top: 5px;
             width: 5px;

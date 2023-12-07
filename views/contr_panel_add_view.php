@@ -1,6 +1,6 @@
 <?php
 require_once '../php/config_session.php';
-require_once '../php/contr_panel.php';
+require_once '../php/contr_panel_add.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ require_once '../php/contr_panel.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Control Panel</title>
-    <link rel="stylesheet" href="../css/contr_panel.css">
+    <link rel="stylesheet" href="../css/contr_panel_add.css">
 </head>
 <body>
 
@@ -23,13 +23,13 @@ require_once '../php/contr_panel.php';
 
     <div class="control-panel-menu">
         <a class="panel-menu-button" href="#">View Books</a>
-        <a class="panel-menu-button-active" href="contr_panel_view.php">Add Entry</a>
+        <a class="panel-menu-button-active" href="contr_panel_add_view.php">Add Entry</a>
         <a class="panel-menu-button" href="#" style="float:right">View Users</a>
     </div>
 
     <div class="panels-wrap">
         <div class="panel-left">
-            <form class="panel-left-section" action="../php/contr_panel.php" method="post">
+            <form class="panel-left-section" action="../php/contr_panel_add.php" method="post">
                 <input type="text" placeholder="Genre" name="add-genre">
                 <button name="submit-genre" type="submit">Add Genre</button>
                 <button name="delete-genre" type="submit">Delete Genre</button>
@@ -37,7 +37,7 @@ require_once '../php/contr_panel.php';
                 check_genre_error();
                 ?>
             </form>
-            <form class="panel-left-section" action="../php/contr_panel.php" method="post">
+            <form class="panel-left-section" action="../php/contr_panel_add.php" method="post">
                 <input type="text" placeholder="Author's Name" name="add-name">
                 <input type="text" placeholder="Author's Last Name" name="add-lastname">
                 <button name="submit-author" type="submit">Add Author</button>
@@ -46,7 +46,7 @@ require_once '../php/contr_panel.php';
                 check_author_error();
                 ?>
             </form>
-            <form class="panel-left-section" action="../php/contr_panel.php" method="post">
+            <form class="panel-left-section" action="../php/contr_panel_add.php" method="post">
                 <input type="text" placeholder="Publisher" name="add-publisher">
                 <button name="submit-publisher" type="submit">Add Publisher</button>
                 <button name="delete-publisher" type="submit">Delete Publisher</button>
@@ -57,7 +57,7 @@ require_once '../php/contr_panel.php';
 
         </div>
 
-        <form class="panel-right" enctype="multipart/form-data" action="../php/contr_panel.php" method="post">
+        <form class="panel-right" enctype="multipart/form-data" action="../php/contr_panel_add.php" method="post">
             <div class="panel-right-half">
                 <input class="small-input" type="text" name="title" placeholder="Title">
 
