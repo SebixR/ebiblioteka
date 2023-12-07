@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legitimately
+if ($_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legitimately
     $name = $_POST["name"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
@@ -44,7 +44,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {//did the
 
         create_user( $pdo,  $name, $lastname, $email, $password);
 
-        header("Location: ../index.php?signup=success"); //sends the user there
+        header("Location: ../views/login_view.php?signup=success"); //sends the user there
 
         $pdo = null;
         $stmt = null;
@@ -55,10 +55,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") {//did the
         die("Query failed: " . $e->getMessage());
     }
 
-} /*else {
-    header("Location: ../index.php"); //sends the user there
-    die();
-}*/
+}
 
 function check_register_error(): void
 {
@@ -73,8 +70,5 @@ function check_register_error(): void
         }
 
         unset($_SESSION["error_register"]); //don't need this data anymore
-    } else if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
-        echo '<br>';
-        echo '<p class="form-success">Succesfully registered</p>';
     }
 }

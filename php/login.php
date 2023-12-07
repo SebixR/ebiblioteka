@@ -85,3 +85,12 @@ function check_login_errors()
         echo '<p class="form-success">Succesfully logged in"</p>';
     }
 }
+
+function display_regster_msg(): void
+{
+    if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
+        echo '<div class="notification-wrap">';
+        echo '<p class="notification">You can now log in.</p>';
+        echo '</div>';
+    }
+}

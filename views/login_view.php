@@ -21,6 +21,12 @@ require_once '../php/login.php';
         ?>
     </header>
 
+    <div class="register-msg">
+        <?php
+        display_regster_msg();
+        ?>
+    </div>
+
     <div class="login">
         <h2>Login</h2>
         <form class="login-form" action="../php/login.php" method="post">

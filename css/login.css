@@ -171,6 +171,13 @@ body {
   background-position: 100% 0;
 }
 
+.register-msg {
+  display: flex;
+  margin: 16px auto;
+  width: 500px;
+  justify-content: center;
+}
+
 .login {
   margin: 65px auto;
   padding: 10px;
