@@ -3,11 +3,20 @@
 declare(strict_types=1);
 
 if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $title = $_POST["title"];
+    $title = strtolower($_POST["title"]);
     $genres = (array)$_POST["genres"];
+    foreach ($genres as $genre)
+    {
+        $genre['name'] = strtolower($genre['name']);
+    }
     $authors = (array)$_POST["authors"];
+    foreach ($authors as $author)
+    {
+        $author['name'] = strtolower($author['name']);
+        $author['lastname'] = strtolower($author['lastname']);
+    }
     $date = $_POST["date"];
-    $publisher = $_POST["publisher"];
+    $publisher = strtolower($_POST["publisher"]);
     $purchase = (float)$_POST["purchase"];
     $borrow = (float)$_POST["borrow"];
     $pages = (int)$_POST["pages"];
@@ -80,7 +89,7 @@ function check_add_error(): void
 
 
 if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $genre = $_POST["add-genre"];
+    $genre = strtolower($_POST["add-genre"]);
 
     $genre_errors = [];
 
@@ -117,7 +126,7 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $genre = $_POST["add-genre"];
+    $genre = strtolower($_POST["add-genre"]);
 
     $genre_errors = [];
 
@@ -175,8 +184,8 @@ function check_genre_error(): void
 
 
 if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["add-name"];
-    $lastname = $_POST["add-lastname"];
+    $name = strtolower($_POST["add-name"]);
+    $lastname = strtolower($_POST["add-lastname"]);
 
     $author_errors = [];
 
@@ -213,8 +222,8 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["add-name"];
-    $lastname = $_POST["add-lastname"];
+    $name = strtolower($_POST["add-name"]);
+    $lastname = strtolower($_POST["add-lastname"]);
 
     $author_errors = [];
 
@@ -270,7 +279,7 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $publisher = $_POST["add-publisher"];
+    $publisher = strtolower($_POST["add-publisher"]);
 
     $publisher_errors = [];
 
@@ -313,7 +322,7 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
     }
 }
 if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $publisher = $_POST["add-publisher"];
+    $publisher = strtolower($_POST["add-publisher"]);
 
     $publisher_errors = [];
 
@@ -375,9 +384,10 @@ function get_genres(): void
     $stmt = fetch_genres($pdo);
     if ($stmt){
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $value = ucfirst($row['name']);
             echo "<li>";
             echo "<label>";
-            echo "<input type='checkbox' value={$row['name']} name='genres[]' class='genre-check'>{$row['name']}</input>";
+            echo "<input type='checkbox' value=$value name='genres[]' class='genre-check'>$value</input>";
             echo "<span class='checkmark'></span>";
             echo "</label>";
             echo "</li>";

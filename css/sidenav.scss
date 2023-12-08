@@ -138,6 +138,23 @@
     display: block;
   }
 
+  button {
+    width: 90%;
+    height: 30px;
+    border: none;
+    background: $color-main;
+    color: $color-dark;
+    outline: $color-light solid 1.5px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 8px;
+    transition: background-color 0.5s;
+  }
+
+  button:hover {
+    background-color: $color-light;
+  }
+
   hr {
     border: 1px solid $color-light;
     width: 80%;

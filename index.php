@@ -178,6 +178,7 @@ require_once 'php/index_contr.php';
                 <label>Publisher</label>
                 <input class="textbox" type="text" placeholder="Publisher's name">
             </div>
+            <button type="submit">Search</button>
         </nav>
 
         <div class="main-content">

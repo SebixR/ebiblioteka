@@ -8,9 +8,10 @@ function get_genres(): void
     $stmt = fetch_genres($pdo);
     if ($stmt){
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $value = ucfirst($row['name']);
             echo "<li>";
             echo "<label>";
-            echo "<input type='checkbox' value={$row['name']} name='genres[]' class='genre-check'>{$row['name']}</input>";
+            echo "<input type='checkbox' value=$value name='genres[]' class='genre-check'>$value</input>";
             echo "<span class='checkmark'></span>";
             echo "</label>";
             echo "</li>";
