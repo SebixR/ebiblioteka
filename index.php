@@ -1,5 +1,6 @@
 <?php
 require_once 'php/config_session.php';
+require_once 'php/index_contr.php';
 ?>
 
 <!DOCTYPE html>
@@ -160,42 +161,9 @@ require_once 'php/config_session.php';
                 <label>Genres</label>
                 <div class="list-wrap">
                     <ul class="genre-list">
-                        <li>
-                            <label>
-                                Genre 1<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                Genre 2<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                Genre 3<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                Genre 4<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                Genre 5<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                Genre 6<input class="genre-check" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
+                        <?php
+                        get_genres();
+                        ?>
                     </ul>
                 </div>
 
