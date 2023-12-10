@@ -24,11 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legi
         if (password_repeated_correctly($password, $password_reap)) {
             $errors["password_repeat"] = "Passwords do not match!";
         }
-        if (!password_complexity_met($password)) {
+        if (password_complexity_met($password)) {
             $errors["password_complexity"] = "Password should include an uppercase character and a number, and should be at least 8 characters long";
         }
         if (is_email_invalid($email)) {
             $errors["invalid_email"] = "Invalid email used!";
+        }
+        if (is_name_invalid($name)) {
+            $errors["name_invalid"] = "Name should consist only of lower and uppercase letters!";
+        }
+        if (is_name_invalid($lastname)) {
+            $errors["lastname_invalid"] = "Last Name should consist only of lower and uppercase letters!";
         }
         if (is_email_registered($pdo, $email)) {
             $errors["email_used"] = "Email already registered!";

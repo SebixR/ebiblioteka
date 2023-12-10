@@ -59,6 +59,8 @@ if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         add_book($pdo, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $filename);
 
+        $pdo = null;
+
         header("Location: ../views/contr_panel_add_view.php");
         echo '<div class="notification-wrap">';
         echo '<p class="notification">Succesfully added book.</p>';
@@ -116,7 +118,6 @@ if (isset($_POST["submit-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         add_genre($pdo, $genre);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();
@@ -156,7 +157,6 @@ if (isset($_POST["delete-genre"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         delete_genre($pdo, $genre);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();
@@ -212,7 +212,6 @@ if (isset($_POST["submit-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         add_author($pdo, $name, $lastname);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();
@@ -253,7 +252,6 @@ if (isset($_POST["delete-author"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         delete_author($pdo, $name, $lastname);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();
@@ -312,7 +310,6 @@ if (isset($_POST["submit-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         add_publisher($pdo, $publisher);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();
@@ -352,7 +349,6 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         delete_publisher($pdo, $publisher);
 
         $pdo = null;
-        $stmt = null;
 
         header("Location: ../views/contr_panel_add_view.php");
         die();

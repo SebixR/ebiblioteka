@@ -16,6 +16,16 @@ function is_email_invalid(string $email): bool
     } else return false;
 }
 
+function is_name_invalid(string $name): bool
+{
+    $uppercase = preg_match('/^[a-zA-Z]+$/', $name);
+    $lowercase = preg_match('/^[a-zA-Z]+$/', $name);
+    if(!$uppercase || !$lowercase) {
+        return true;
+    }
+    else return false;
+}
+
 function is_email_registered(object $pdo , string $email): bool
 {
     if (get_email($pdo,  $email)) {
@@ -36,9 +46,9 @@ function password_complexity_met(string $password): bool
     $number    = preg_match('@[0-9]@', $password);
 
     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-        return false;
+        return true;
     }
-    else return true;
+    else return false;
 }
 
 function create_user(object $pdo, string $name, string $lastname, string $email, string $password): void

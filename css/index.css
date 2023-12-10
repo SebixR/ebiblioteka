@@ -368,6 +368,21 @@ body {
   position: relative;
   display: block;
 }
+.sidenav button {
+  width: 90%;
+  height: 30px;
+  border: none;
+  background: #DBB280;
+  color: #3d2410;
+  outline: #efdbb8 solid 1.5px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 8px;
+  transition: background-color 0.5s;
+}
+.sidenav button:hover {
+  background-color: #efdbb8;
+}
 .sidenav hr {
   border: 1px solid #efdbb8;
   width: 80%;
