@@ -43,16 +43,12 @@
     height: 26px;
     border: none;
     margin-left: 5px;
-    background: $color-main;
+    background: $color-light;
     color: $color-dark;
     outline: $color-light solid 1.5px;
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.5s;
-  }
-
-  .search-button:hover{
-    background-color: $color-light;
   }
 
   .dropdown{

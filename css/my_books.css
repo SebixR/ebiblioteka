@@ -50,15 +50,12 @@ body {
   height: 26px;
   border: none;
   margin-left: 5px;
-  background: #DBB280;
+  background: #efdbb8;
   color: #3d2410;
   outline: #efdbb8 solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.5s;
-}
-.topnav .search-button:hover {
-  background-color: #efdbb8;
 }
 .topnav .dropdown {
   float: right;

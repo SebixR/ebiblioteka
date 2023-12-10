@@ -51,15 +51,12 @@ body {
   height: 26px;
   border: none;
   margin-left: 5px;
-  background: #DBB280;
+  background: #efdbb8;
   color: #3d2410;
   outline: #efdbb8 solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.5s;
-}
-.topnav .search-button:hover {
-  background-color: #efdbb8;
 }
 .topnav .dropdown {
   float: right;
@@ -264,16 +261,13 @@ body {
   width: 60%;
   height: 30px;
   border: none;
-  background: #DBB280;
+  background: #efdbb8;
   color: #3d2410;
   outline: #efdbb8 solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   margin: 8px;
   transition: background-color 0.5s;
-}
-.panels-wrap .panel-left .panel-left-section button:hover {
-  background-color: #efdbb8;
 }
 .panels-wrap .panel-left:hover {
   box-shadow: none;
@@ -484,7 +478,7 @@ body {
   height: 35px;
   border: none;
   font-size: 18px;
-  background: #DBB280;
+  background: #efdbb8;
   color: #3d2410;
   outline: #efdbb8 solid 1.5px;
   cursor: pointer;
@@ -492,9 +486,6 @@ body {
   margin-top: 36px;
   margin-bottom: 8px;
   transition: background-color 0.5s;
-}
-.panels-wrap .panel-right .panel-right-half button:hover {
-  background-color: #efdbb8;
 }
 .panels-wrap .panel-right .notifications-wrap-add {
   display: flex;

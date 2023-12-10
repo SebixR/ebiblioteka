@@ -60,17 +60,13 @@ body {
   height: 35px;
   border: none;
   margin: 12px;
-  background: $color-main;
+  background: $color-light;
   color: $color-dark;
   outline: $color-light solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   font-size: 14pt;
   transition: background-color 0.5s;
-}
-
-.register-button:hover {
-  background-color: $color-light;
 }
 
 .or-login {
@@ -105,17 +101,13 @@ body {
   height: 35px;
   border: none;
   margin: 12px;
-  background: $color-main;
+  background: $color-light;
   color: $color-dark;
   outline: $color-light solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   font-size: 14pt;
   transition: background-color 0.5s;
-}
-
-.login-button:hover {
-  background-color: $color-light;
 }
 
 .textbox {

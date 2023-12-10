@@ -111,17 +111,13 @@ body {
         width: 60%;
         height: 30px;
         border: none;
-        background: $color-main;
+        background: $color-light;
         color: $color-dark;
         outline: $color-light solid 1.5px;
         cursor: pointer;
         border-radius: 10px;
         margin: 8px;
         transition: background-color 0.5s;
-      }
-
-      button:hover {
-        background-color: $color-light;
       }
     }
   }
@@ -361,7 +357,7 @@ body {
         height: 35px;
         border: none;
         font-size: 18px;
-        background: $color-main;
+        background: $color-light;
         color: $color-dark;
         outline: $color-light solid 1.5px;
         cursor: pointer;
@@ -369,10 +365,6 @@ body {
         margin-top: 36px;
         margin-bottom: 8px;
         transition: background-color 0.5s;
-      }
-
-      button:hover {
-        background-color: $color-light;
       }
     }
 
