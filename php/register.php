@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legi
             die();
         }
 
+        //TODO create a bookcase for the user straight away
         create_user( $pdo,  $name, $lastname, $email, $password);
 
         header("Location: ../views/login_view.php?signup=success"); //sends the user there
