@@ -1,10 +1,10 @@
 <?php
 require_once '../php/config_session.php';
-require_once '../php/contr_panel_users.php';
+require_once '../php/contr_panel_books.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +22,15 @@ require_once '../php/contr_panel_users.php';
     </header>
 
     <div class="control-panel-menu">
-        <a class="panel-menu-button" href="contr_panel_books_view.php">View Books</a>
+        <a class="panel-menu-button-active" href="contr_panel_books_view.php">View Books</a>
         <a class="panel-menu-button" href="contr_panel_add_view.php">Add Entry</a>
-        <a class="panel-menu-button-active" href="contr_panel_users_view.php" style="float:right">View Users</a>
+        <a class="panel-menu-button" href="contr_panel_users_view.php" style="float:right">View Users</a>
     </div>
 
-    <div class="user-list">
-        <?php
-        get_users();
-        ?>
+    <div class="books">
+
     </div>
 
 </div>
 </body>
+<?php

@@ -22,7 +22,7 @@ require_once '../php/contr_panel_add.php';
     </header>
 
     <div class="control-panel-menu">
-        <a class="panel-menu-button" href="#">View Books</a>
+        <a class="panel-menu-button" href="contr_panel_books_view.php">View Books</a>
         <a class="panel-menu-button-active" href="contr_panel_add_view.php">Add Entry</a>
         <a class="panel-menu-button" href="contr_panel_users_view.php" style="float:right">View Users</a>
     </div>
