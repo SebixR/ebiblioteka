@@ -28,7 +28,9 @@ require_once '../php/contr_panel_books.php';
     </div>
 
     <div class="books">
-
+        <?php
+        get_books();
+        ?>
     </div>
 
 </div>
