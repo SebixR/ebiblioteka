@@ -7,22 +7,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["block_user"])) {
     $user_id = (int)$_POST["user_id"];
 
     try {
-
         require_once 'connection.php';
         require_once "contr_panel_users_model.php";
         require_once "contr_panel_users_contr.php";
 
-        if (check_if_blocked($pdo, $user_id))
+        if (check_user_role($pdo, $user_id) != 'admin')
         {
-            set_user_role($pdo, $user_id, 'user');
+            if (check_user_role($pdo, $user_id) == 'blocked')
+            {
+                set_user_role($pdo, $user_id, 'user');
+            }
+            else set_user_role($pdo, $user_id, 'blocked');
+
+            $pdo = null;
+
+            header("Location: ../views/contr_panel_users_view.php");
+            die();
         }
-        else set_user_role($pdo, $user_id, 'blocked');
-
-        $pdo = null;
-
-        header("Location: ../views/contr_panel_users_view.php");
-        die();
-
+        else
+        {
+            $pdo = null;
+            header("Location: ../views/contr_panel_users_view.php");
+            die();
+        }
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
@@ -42,9 +49,13 @@ function get_users(): void
             $lastname = ucfirst($row['last_name']);
             $email = $row['email'];
 
-            if (check_if_blocked($pdo, $id))
+            if (check_user_role($pdo, $id) == 'blocked')
             {
                 $button_text = 'Un-block';
+            }
+            else if (check_user_role($pdo, $id) == 'admin')
+            {
+                $button_text = 'Admin';
             }
             else $button_text = 'Block';
 

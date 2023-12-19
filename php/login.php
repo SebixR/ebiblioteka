@@ -24,7 +24,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same t
 
         require_once "contr_panel_users_model.php";
         require_once "contr_panel_users_contr.php";
-        if (check_if_blocked($pdo, $result["user_id"])) {
+        if (check_user_role($pdo, $result["user_id"])) {
             $errors["user_blocked"] = "Your account has been blocked by an administrator!";
         }
 
