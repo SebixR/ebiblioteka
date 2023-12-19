@@ -10,8 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["block_user"])) {
 
         require_once 'connection.php';
         require_once "contr_panel_users_model.php";
+        require_once "contr_panel_users_contr.php";
 
-        delete_user($pdo, $user_id);
+        if (check_if_blocked($pdo, $user_id))
+        {
+            set_user_role($pdo, $user_id, 'user');
+        }
+        else set_user_role($pdo, $user_id, 'blocked');
 
         $pdo = null;
 
@@ -27,6 +32,7 @@ function get_users(): void
 {
     require_once "connection.php";
     require_once "contr_panel_users_model.php";
+    require_once "contr_panel_users_contr.php";
 
     $stmt = fetch_users($pdo);
     if ($stmt){
@@ -35,6 +41,12 @@ function get_users(): void
             $name = ucfirst($row['name']);
             $lastname = ucfirst($row['last_name']);
             $email = $row['email'];
+
+            if (check_if_blocked($pdo, $id))
+            {
+                $button_text = 'Un-block';
+            }
+            else $button_text = 'Block';
 
             echo "<form class='user-wrap' action='../php/contr_panel_users.php' method='post'>";
                 echo "<label class='user-content' style='width: 10%'>$id</label>";
@@ -46,7 +58,7 @@ function get_users(): void
                     echo "<button>View Bookcase</button>";
                 echo "</a>";
                 echo "<div class='user-content' style='width: 15%'>";
-                echo "<button type='submit' name='block_user'>Block</button>";
+                echo "<button type='submit' name='block_user'>$button_text</button>";
                 echo "</div>";
             echo "</form>";
         }

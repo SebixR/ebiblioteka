@@ -234,6 +234,7 @@ body {
 }
 .user-list .user-wrap .user-content {
   padding: 8px;
+  min-width: 115px;
 }
 .user-list .user-wrap .user-content label {
   padding: 4px;
