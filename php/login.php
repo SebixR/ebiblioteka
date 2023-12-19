@@ -12,6 +12,8 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same t
         require_once 'login_model.php';
         require_once 'login_contr.php';
 
+
+
         $errors = [];
 
         if (is_input_empty($email, $password)) {
@@ -19,6 +21,12 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same t
         }
 
         $result = get_user($pdo, $email); //pdo is imported from connection.php
+
+        require_once "contr_panel_users_model.php";
+        require_once "contr_panel_users_contr.php";
+        if (check_if_blocked($pdo, $result["user_id"])) {
+            $errors["user_blocked"] = "Your account has been blocked by an administrator!";
+        }
 
         if (is_email_wrong($result)) {
             $errors["login_incorrect"] = "Incorrect email!";
