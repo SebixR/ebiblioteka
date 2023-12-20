@@ -1,0 +1,115 @@
+@import "../colors";
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", serif;
+}
+
+body {
+  background: $color-background;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+@import "topnav";
+
+@import "main";
+
+@import "contr_panel_menu";
+
+.books {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  top: 20px;
+}
+
+.row {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.half-row {
+  width: 33%;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.item {
+  width: 50%;
+  max-width: 400px;
+  align-items: center;
+  text-align: center;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.item a {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 70%;
+  border: $color-main solid 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px $color-shadow;
+}
+
+.item-info h3 {
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: $color-dark;
+}
+
+p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.title {
+  color: $color-dark;
+  text-decoration: none;
+}
+
+.title:hover{
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .main-content, .main {
+    width: 100%;
+    height: auto;
+  }
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1500px) {
+  .half-row {
+    width: 100%;
+  }
+  .title {
+    font-size: 12pt;
+  }
+  .item-info p {
+    font-size: 10pt;
+  }
+}
