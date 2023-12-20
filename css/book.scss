@@ -125,16 +125,11 @@ body {
     border: none;
     width: 70%;
     height: 45px;
-    background: $color-main;
-    outline: $color-light solid 1.5px;
+    background: $color-light;
     cursor: pointer;
     border-radius: 10px;
     font-size: 13pt;
     transition: background-color 0.5s;
-  }
-
-  .option button:hover{
-    background: $color-light;
   }
 
   .option label{

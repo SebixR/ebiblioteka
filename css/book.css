@@ -269,15 +269,11 @@ body {
   border: none;
   width: 70%;
   height: 45px;
-  background: #DBB280;
-  outline: #efdbb8 solid 1.5px;
+  background: #efdbb8;
   cursor: pointer;
   border-radius: 10px;
   font-size: 13pt;
   transition: background-color 0.5s;
-}
-.right-wrap .option button:hover {
-  background: #efdbb8;
 }
 .right-wrap .option label {
   font-size: 17pt;
