@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legitimately
-    $name = $_POST["name"];
-    $lastname = $_POST["lastname"];
+    $name = strtolower($_POST["name"]);
+    $lastname = strtolower($_POST["lastname"]);
     $email = $_POST["email"];
     $password = $_POST["password"];
     $password_reap = $_POST["password_repeat"];
