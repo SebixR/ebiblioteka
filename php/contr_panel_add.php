@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 if (isset($_POST["submit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
-    $title = strtolower($_POST["title"]);
+    $title = $_POST["title"];
     $genres = (array)$_POST["genres"];
     foreach ($genres as &$genre) //& - so that the array doesn't copy genres, but alters the original data
     {
