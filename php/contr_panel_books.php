@@ -56,8 +56,8 @@ function set_book_display(array $row): void
     echo "<h3>";
     echo "<a href='#Book' class='title'>$title</a>";
     echo "</h3>";
-    echo "<p>Borrow: $borrow_price</p>";
-    echo "<p>Purchase: $purchase_price</p>";
+    echo "<p>Borrow: $borrow_price $</p>";
+    echo "<p>Purchase: $purchase_price $</p>";
     echo "</div>";
     echo "</div>";
 }
