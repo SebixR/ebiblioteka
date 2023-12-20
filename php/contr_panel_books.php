@@ -39,6 +39,7 @@ function get_books(): void
             echo "</div>"; //in case the number of books isn't divisible by 3
         }
     }
+    $stmt = null;
 }
 
 function set_book_display(array $row): void
@@ -47,11 +48,12 @@ function set_book_display(array $row): void
     $image = $row['cover_img'];
     $borrow_price = $row['borrow_price'];
     $purchase_price = $row['purchase_price'];
+    $book_id = $row['book_id'];
 
-    echo "<div class='item'>";
-    echo "<a href='#Book' class='image-link'>";
-    echo"<img src='../images/$image' class='image' alt='Book Title'>";
-    echo "</a>";
+    echo "<form class='item' action='../php/contr_panel_books.php' method='post'>";
+    echo "<div class='image-wrap'>";
+    echo"<img src='../images/$image' class='image' alt=$title>";
+    echo "</div>";
     echo "<div class='item-info'>";
     echo "<h3>";
     echo "<a href='#Book' class='title'>$title</a>";
@@ -59,5 +61,27 @@ function set_book_display(array $row): void
     echo "<p>Borrow: $borrow_price $</p>";
     echo "<p>Purchase: $purchase_price $</p>";
     echo "</div>";
-    echo "</div>";
+    echo "<button class='book-button' style='bottom:50%'>Edit</button>";
+    echo "<button class='book-button' name='delete_book'>Delete</button>";
+    echo "<input type='hidden' name='book_id' value=$book_id>";
+    echo "</form>";
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_book"])) {
+
+    $book_id = (int)$_POST["book_id"];
+
+    try {
+        require_once 'connection.php';
+        require_once "contr_panel_books_model.php";
+
+        delete_book($pdo, $book_id);
+
+        $pdo = null;
+        header("Location: ../views/contr_panel_books_view.php");
+        die();
+
+    } catch (Exception $e) {
+        die("Query failed: " . $e->getMessage());
+    }
 }

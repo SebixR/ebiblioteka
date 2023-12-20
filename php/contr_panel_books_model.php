@@ -8,3 +8,20 @@ function fetch_books($pdo) {
     $stmt->execute();
     return $stmt;
 }
+
+function delete_book(object $pdo, int $book_id) {
+    $query = "DELETE FROM author_book WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->execute();
+
+    $query = "DELETE FROM genre_book WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->execute();
+
+    $query = "DELETE FROM books WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->execute();
+}

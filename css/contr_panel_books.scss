@@ -9,7 +9,6 @@
 
 body {
   background: $color-background;
-  justify-content: center;
   position: relative;
   height: 100%;
 }
@@ -58,14 +57,33 @@ body {
   padding: 20px;
 }
 
-.item a {
+.image-wrap {
   height: 100%;
   display: flex;
   justify-content: center;
 }
 
+.book-button {
+  position: absolute;
+  bottom: 35%;
+  border: none;
+  background-color: $color-light;
+  color: $color-dark;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 4px;
+  font-size: 13pt;
+  width: 25%;
+  box-shadow: 0 2px 2px $color-shadow;
+}
+
+.book-button:hover {
+  cursor: pointer;
+}
+
 .image {
-  max-width: 70%;
+  opacity: 60%;
+  max-width: 80%;
   border: $color-main solid 5px;
   border-radius: 10px;
   box-shadow: 0 2px 2px $color-shadow;
