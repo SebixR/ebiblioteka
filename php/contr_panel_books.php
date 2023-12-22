@@ -61,7 +61,7 @@ function set_book_display(array $row): void
     echo "<p>Borrow: $borrow_price $</p>";
     echo "<p>Purchase: $purchase_price $</p>";
     echo "</div>";
-    echo "<button class='book-button' style='bottom:50%'>Edit</button>";
+    echo "<a href='../views/contr_panel_edit_view.php?id=$book_id' class='book-button' style='bottom:50%'>Edit</a>";
     echo "<button class='book-button' name='delete_book'>Delete</button>";
     echo "<input type='hidden' name='book_id' value=$book_id>";
     echo "</form>";
