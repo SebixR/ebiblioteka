@@ -1,11 +1,11 @@
 <?php
 
-function getBooks($pdo)
+function fetch_books_main(object $pdo)
 {
-    $query = "SELECT * FROM books;";
+    $query = "SELECT * FROM books";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt;
 }
 
 function fetch_genres(object $pdo)

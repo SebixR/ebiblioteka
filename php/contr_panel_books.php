@@ -32,11 +32,22 @@ function get_books(): void
             if ($counter == 3) //end of row
             {
                 echo "</div>";
+                $counter = 0;
+            }
+        }
+        if ($counter < 3) //empty rows so that it all looks nice
+        {
+            $i = $counter;
+            while ($i < 3)
+            {
+                echo "<div class='half-row'>";
+                echo "</div>";
+                $i++;
             }
         }
         if ($counter % 3 != 0)
         {
-            echo "</div>"; //in case the number of books isn't divisible by 3
+            echo "</div>"; //in case the number of books isn't divisible by 3 - close "row"
         }
     }
     $stmt = null;
@@ -52,7 +63,7 @@ function set_book_display(array $row): void
 
     echo "<form class='item' action='../php/contr_panel_books.php' method='post'>";
     echo "<div class='image-wrap'>";
-    echo"<img src='../images/$image' class='image' alt=$title>";
+    echo"<img src='../images/$image' class='image' alt='$title'>";
     echo "</div>";
     echo "<div class='item-info'>";
     echo "<h3>";
