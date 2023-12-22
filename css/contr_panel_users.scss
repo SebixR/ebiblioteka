@@ -51,6 +51,7 @@ body {
       }
 
       button {
+        color: $color-dark;
         border: none;
         border-radius: 10px;
         padding: 8px;
@@ -60,5 +61,23 @@ body {
         float: right;
       }
     }
+
+    .view-bookcase {
+      color: $color-dark;
+      border-radius: 10px;
+      padding: 8px;
+      background-color: $color-main;
+      cursor: pointer;
+      font-size: 12pt;
+      float: right;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .view-bookcase:visited {
+      color: $color-dark;
+    }
   }
 }
+
+

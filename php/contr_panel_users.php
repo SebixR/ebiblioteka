@@ -65,9 +65,9 @@ function get_users(): void
                 echo "<label class='user-content' style='width: 20%'>$name</label>";
                 echo "<label class='user-content' style='width: 20%'>$lastname</label>";
                 echo "<label class='user-content' style='width: 20%'>$email</label>";
-                echo "<a class='user-content' style='width: 15%'>";
-                    echo "<button>View Bookcase</button>";
-                echo "</a>";
+                echo "<div class='user-content' style='width: 15%'>";
+                echo "<a class='view-bookcase' href='../views/my_books_view.php?id=$id' class='user-content'>View Bookcase</a>";
+                echo "</div>";
                 echo "<div class='user-content' style='width: 15%'>";
                 echo "<button type='submit' name='block_user'>$button_text</button>";
                 echo "</div>";
