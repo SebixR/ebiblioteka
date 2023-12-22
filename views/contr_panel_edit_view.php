@@ -34,12 +34,15 @@ require_once '../php/contr_panel_edit.php';
             $book_id = $_GET['id'] ?? null; //get id or set to null otherwise
             $book_info = get_book_info($book_id);
             $title = $book_info['title'];
+            $date = $book_info['release_date'];
             $publisher = get_publisher_name($book_info['publisher_id']);
             $purchase_price = $book_info['purchase_price'];
             $borrow_price = $book_info['borrow_price'];
             $page_number = $book_info['page_number'];
             $cover = $book_info['cover_img'];
             $summary = $book_info['summary'];
+
+            $authors = get_authors($book_id); //array of format [index][name] [index][lastname]
             ?>
 
             <div class="panel-right-half">
@@ -50,24 +53,42 @@ require_once '../php/contr_panel_edit.php';
                 <div class="genre-wrap">
                     <ul class="genre-list">
                         <?php
-                        get_genres();
+                        get_genres($book_id);
                         ?>
                     </ul>
                 </div>
 
+
                 <div class="add-authors">
                     <div id="author-parent">
-                        <div class="author-data" id="author-data">
-                            <input class="small-input" type="text" name="authors[0][name]" placeholder="Author's Name">
-                            <input class="small-input" type="text" name="authors[0][lastname]" placeholder="Author's Last Name">
-                        </div>
+
+                        <?php
+                        $counter = 0;
+                        foreach($authors as $author)
+                        {
+                            $name = ucfirst($author['name']);
+                            $lastname = ucfirst($author['lastname']);
+                            echo "<div class='author-data' id='author-data'>";
+                            echo "<input value='$name' class='small-input' type='text' name='authors[$counter][name]' placeholder='Author Name'>";
+                            echo "<input value='$lastname' class='small-input' type='text' name='authors[$counter][lastname]' placeholder='Author Last Name'>";
+                            echo "</div>";
+                            $counter++;
+                        }
+                        ?>
                     </div>
 
                     <button class="add-author-button" type="button" onclick="add_author()">+</button>
                     <button class="remove-author-button" type="button" onclick="remove_author()">-</button>
 
                     <script>
-                        let author_counter = 1;
+                        let author_counter = count_authors();
+
+                        function count_authors()
+                        {
+                            let parent = document.querySelector('#author-parent');
+                            return parent.children.length;
+                        }
+
                         function add_author(){
                             if (author_counter < 10)
                             {
@@ -92,8 +113,10 @@ require_once '../php/contr_panel_edit.php';
                         }
                     </script>
                 </div>
-                <input class="small-input" type="date" name="date" placeholder="Release Date">
+
+
                 <?php
+                echo "<input value='$date' class='small-input' type='date' name='date' placeholder='Release Date'>";
                 echo "<input value='$publisher' class='small-input' type='text' name='publisher' placeholder='Publisher'>";
                 ?>
                 <div class="prices-wrap">
@@ -120,7 +143,7 @@ require_once '../php/contr_panel_edit.php';
                 echo "<textarea maxlength='250' class='summary' name='summary'>$summary</textarea>";
                 ?>
 
-                <button type="submit" name="submit-book">Add Book</button>
+                <button type="submit" name="submit-book">Edit Book</button>
                 <div class="notifications-wrap-add">
                     <?php
                     //TODO

@@ -383,7 +383,7 @@ function get_genres(): void
             $value = ucfirst($row['name']);
             echo "<li>";
             echo "<label>";
-            echo "<input type='checkbox' value=$value name='genres[]' class='genre-check'>$value</input>";
+            echo "<input type='checkbox' value='$value' name='genres[]' class='genre-check'>$value</input>";
             echo "<span class='checkmark'></span>";
             echo "</label>";
             echo "</li>";
