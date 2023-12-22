@@ -2,6 +2,89 @@
 
 declare(strict_types=1);
 
+
+if (isset($_POST["edit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $title = $_POST["title"];
+    $genres = (array)$_POST["genres"];
+    foreach ($genres as &$genre)
+    {
+        $genre = strtolower($genre);
+    }
+    $authors = (array)$_POST["authors"];
+    foreach ($authors as &$author)
+    {
+        $author['name'] = strtolower($author['name']);
+        $author['lastname'] = strtolower($author['lastname']);
+    }
+    $date = $_POST["date"];
+    $publisher = strtolower($_POST["publisher"]);
+    $purchase = (float)$_POST["purchase"];
+    $borrow = (float)$_POST["borrow"];
+    $pages = (int)$_POST["pages"];
+    $summary = $_POST["summary"];
+
+    $book_id = (int)$_POST["book_id"];
+
+    $book_errors = [];
+
+    try {
+        require_once 'connection.php';
+        require_once 'contr_panel_edit_model.php';
+        require_once 'contr_panel_edit_contr.php';
+
+        if (is_input_empty($title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary)){
+            $book_errors["empty_input"] = "Some fields are empty.";
+        }
+        if (check_authors($pdo, $authors)){
+            $book_errors["missing_author"] = "No such author in the database.";
+        }
+        if (check_publisher($pdo, $publisher)){
+            $book_errors["missing_publisher"] = "No such publisher in the database.";
+        }
+        if (check_duplicate_author_in_list($authors)) {
+            $book_errors["duplicate_author_in_list"] = "Two or more identical authors are in the list";
+        }
+
+        require_once 'config_session.php';
+
+        if ($book_errors) {
+            $_SESSION["error_add_book"] = $book_errors;
+            header("Location: ../views/contr_panel_edit_view.php?id=$book_id");
+            die();
+        }
+
+        edit_book($pdo, $book_id, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary);
+
+        $pdo = null;
+
+        header("Location: ../views/contr_panel_edit_view.php?id=$book_id");
+        echo '<div class="notification-wrap">';
+        echo '<p class="notification">Succesfully edited book.</p>';
+        echo '</div>';
+        die();
+
+    }  catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+}
+
+function check_edit_error(): void
+{
+    if (isset($_SESSION["error_add_book"])) {
+        $errors = $_SESSION["error_add_book"];
+
+        echo "<br>";
+        foreach ($errors as $error) {
+            echo '<div class="notification-wrap">';
+            echo '<p class="notification">' . $error . '</p>';
+            echo '</div>';
+        }
+
+        unset($_SESSION["error_add_book"]);
+    }
+}
+
 function get_book_info(int $book_id) {
 
     try {

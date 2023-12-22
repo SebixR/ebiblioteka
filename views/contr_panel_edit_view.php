@@ -132,22 +132,23 @@ require_once '../php/contr_panel_edit.php';
             </div>
             <div class="panel-right-half">
                 <label class="file-input">
-                    <input type="file" name="choosefile" value="" placeholder="Cover">
-                    Upload Cover Image
-                    <br>
                     <?php
+                    echo "<input type='file' name='choosefile' placeholder='Cover'>";
+                    echo "Upload Cover Image";
+                    echo "<br>";
+
                     echo "<label>$cover</label>";
                     ?>
                 </label>
                 <?php
                 echo "<textarea maxlength='250' class='summary' name='summary'>$summary</textarea>";
+                echo "<input type='hidden' value=$book_id name='book_id'>"
                 ?>
 
-                <button type="submit" name="submit-book">Edit Book</button>
+                <button type="submit" name="edit-book">Edit Book</button>
                 <div class="notifications-wrap-add">
                     <?php
-                    //TODO
-                    //check_edit_error();
+                    check_edit_error();
                     ?>
                 </div>
             </div>
