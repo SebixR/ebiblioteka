@@ -434,6 +434,10 @@ body {
   padding: 20px;
 }
 
+.item a {
+  height: 100%;
+}
+
 .image {
   max-width: 70%;
   border: #DBB280 solid 5px;

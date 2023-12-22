@@ -202,7 +202,6 @@ require_once 'php/topnav_contr.php'
 
 </div>
 
-
 </body>
 </html>
 
