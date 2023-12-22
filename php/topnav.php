@@ -81,4 +81,7 @@ require_once '../php/login.php'
         </script>
     <?php }
     ?>
+
+    <a class="control-panel-button" href="../views/contr_panel_books_view.php">Control Panel</a>
+
 </nav>

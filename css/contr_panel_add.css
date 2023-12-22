@@ -53,10 +53,14 @@ body {
   margin-left: 5px;
   background: #efdbb8;
   color: #3d2410;
-  outline: #efdbb8 solid 1.5px;
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.5s;
+}
+.topnav .control-panel-button {
+  background: #efdbb8;
+  color: #3d2410;
+  text-decoration: none;
 }
 .topnav .dropdown {
   float: right;

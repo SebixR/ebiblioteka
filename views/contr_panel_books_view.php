@@ -2,7 +2,6 @@
 require_once '../php/config_session.php';
 require_once '../php/contr_panel_books.php';
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
 <head>

@@ -45,10 +45,15 @@
     margin-left: 5px;
     background: $color-light;
     color: $color-dark;
-    outline: $color-light solid 1.5px;
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.5s;
+  }
+
+  .control-panel-button {
+    background: $color-light;
+    color: $color-dark;
+    text-decoration: none;
   }
 
   .dropdown{
