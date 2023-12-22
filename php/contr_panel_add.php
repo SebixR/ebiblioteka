@@ -374,7 +374,7 @@ if (isset($_POST["delete-publisher"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
 function get_genres(): void
 {
-    require_once "connection.php";
+    require "connection.php";
     require_once "contr_panel_add_model.php";
 
     $stmt = fetch_genres($pdo);

@@ -88,7 +88,7 @@ function check_edit_error(): void
 function get_book_info(int $book_id) {
 
     try {
-        require_once "connection.php";
+        require "connection.php";
         require_once "contr_panel_edit_model.php";
 
         $stmt = fetch_book_info($pdo, $book_id);

@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["block_user"])) {
 
 function get_users(): void
 {
-    require_once "connection.php";
+    require "connection.php";
     require_once "contr_panel_users_model.php";
     require_once "contr_panel_users_contr.php";
 

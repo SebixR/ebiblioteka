@@ -1,6 +1,7 @@
 <?php
 require_once 'php/config_session.php';
 require_once 'php/index_contr.php';
+require_once 'php/topnav_contr.php'
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +96,15 @@ require_once 'php/index_contr.php';
                 </script>
             <?php }
             ?>
+
+            <?php
+            if (isset($_SESSION["user_id"])) {
+                if (get_user_role($_SESSION["user_id"]) === 'admin') {
+                    echo "<a class='control-panel-button' href='views/contr_panel_books_view.php'>Control Panel</a>";
+                }
+            }
+            ?>
+
         </nav>
     </header>
 

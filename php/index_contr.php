@@ -2,7 +2,7 @@
 
 function get_genres(): void
 {
-    require_once "connection.php";
+    require "connection.php";
     require_once "index_model.php";
 
     $stmt = fetch_genres($pdo);

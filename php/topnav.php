@@ -1,6 +1,7 @@
 <?php
-require_once '../php/config_session.php';
-require_once '../php/login.php'
+require_once 'config_session.php';
+require_once 'login.php';
+require_once 'topnav_contr.php'
 ?>
 
 <nav class="topnav">
@@ -82,6 +83,12 @@ require_once '../php/login.php'
     <?php }
     ?>
 
-    <a class="control-panel-button" href="../views/contr_panel_books_view.php">Control Panel</a>
+    <?php
+    if (isset($_SESSION["user_id"])) {
+        if (get_user_role($_SESSION["user_id"]) === 'admin') {
+            echo "<a class='control-panel-button' href='../views/contr_panel_books_view.php'>Control Panel</a>";
+        }
+    }
+    ?>
 
 </nav>

@@ -1,6 +1,7 @@
 <?php
 require_once '../php/config_session.php';
 require_once '../php/contr_panel_books.php';
+require_once '../php/topnav_contr.php';
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -12,6 +13,11 @@ require_once '../php/contr_panel_books.php';
     <link rel="stylesheet" href="../css/contr_panel_books.css">
 </head>
 <body>
+
+<?php
+if (isset($_SESSION["user_id"])) {
+    if (get_user_role($_SESSION["user_id"]) === 'admin') {
+        ?>
 
 <div class="main">
     <header>
@@ -35,3 +41,5 @@ require_once '../php/contr_panel_books.php';
 </div>
 </body>
 <?php
+    }
+}

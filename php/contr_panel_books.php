@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 function get_books(): void
 {
-    require_once "connection.php";
+    require "connection.php";
     require_once "contr_panel_books_model.php";
     require_once "contr_panel_books_contr.php";
 
