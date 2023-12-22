@@ -35,7 +35,7 @@ function get_books_main(): void
         if ($counter < 2) //empty rows so that it all looks nice
         {
             $i = $counter;
-            while ($i < 3)
+            while ($i < 2)
             {
                 echo "<div class='half-row'>";
                 echo "</div>";
