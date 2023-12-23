@@ -165,8 +165,9 @@ require_once 'php/topnav_contr.php'
         </script>
     </div>
 
+
     <section>
-        <nav class="sidenav">
+        <form class="sidenav" method="get">
             <div class="genre-wrap">
                 <label>Genres</label>
                 <div class="list-wrap">
@@ -181,17 +182,91 @@ require_once 'php/topnav_contr.php'
             <hr>
             <div class="author-wrap">
                 <label>Author</label>
-                <input class="textbox" type="text" placeholder="Author's name">
+                <input class="textbox" type="text" name="author-name" placeholder="Author's name">
+                <input class="textbox" type="text" name="author-lastname" placeholder="Author's last name">
             </div>
             <hr>
             <div class="publisher-wrap">
                 <label>Publisher</label>
-                <input class="textbox" type="text" placeholder="Publisher's name">
+                <input class="textbox" type="text" name="publisher" placeholder="Publisher's name">
             </div>
-            <button type="submit">Apply</button>
-        </nav>
+            <button type="submit" name="apply">Apply</button>
+        </form>
+
 
         <div class="main-content">
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["apply"])) {
+
+                $genres = $_GET["genres"] ?? [];
+                $name = strtolower($_GET["author-name"]);
+                $lastname = strtolower($_GET["author-lastname"]);
+                $publisher = strtolower($_GET["publisher"]);
+
+                if (empty($name)) $name = "not";
+                if (empty($lastname)) $lastname = "not";
+                if (empty($publisher)) $publisher = "not";
+
+                if (!(count($genres) == 0 && ($name == "not" || $lastname == "not") && $publisher == "not"))
+                {
+                    require "php/connection.php";
+                    require_once "php/index_model.php";
+
+                    $stmt = fetch_books_filtered($pdo, $genres, $name, $lastname, $publisher);
+                    if ($stmt)
+                    {
+                        if ($stmt->rowCount() == 0)
+                        {
+                            echo "<p style='padding: 8px; color: #3D2410FF'>Nothing to show</p>";
+                            $stmt = null;
+                            die();
+                        }
+
+                        $counter = 0;
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                            if ($counter == 0) //two half-rows in single row
+                            {
+                                echo "<div class='row'>";
+                            }
+
+                            echo "<div class='half-row'>";
+
+                            set_book_display($row);
+
+                            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                set_book_display($row);
+                            }
+
+                            echo "</div>";
+                            $counter++;
+                            if ($counter == 2) //end of row
+                            {
+                                echo "</div>";
+                                $counter = 0;
+                            }
+                        }
+                        if ($counter < 2) //empty rows so that it all looks nice
+                        {
+                            $i = $counter;
+                            while ($i < 2)
+                            {
+                                echo "<div class='half-row'>";
+                                echo "</div>";
+                                $i++;
+                            }
+                        }
+                        if ($counter % 2 != 0)
+                        {
+                            echo "</div>"; //in case the number of books isn't divisible by 2
+                        }
+                    }
+
+                    $stmt = null;
+                    die(); // it's thanks to this that the other books don't get displayed
+                }
+            }
+            ?>
 
             <?php
             get_books_main();
@@ -199,6 +274,8 @@ require_once 'php/topnav_contr.php'
 
         </div>
     </section>
+
+
 
 </div>
 
