@@ -1,3 +1,8 @@
+<?php
+require_once '../php/config_session.php';
+require_once '../php/book_view_contr.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +20,26 @@
     ?>
 </header>
 
+<?php
+$book_id = $_GET['id'] ?? null;
+?>
+
 <div class="left-wrap">
     <div class="img-wrap">
-        <img src="../images/lotr_cover.jpg" alt="Book Title" class="cover">
+        <?php
+        get_cover_image($book_id);
+        ?>
     </div>
 </div>
 
 <div class="right-wrap">
     <div class="book-info">
         <div class="info">
-            <label>Title:</label>
-            <label>Author:</label>
-            <label>Publisher:</label>
-            <label>Release Date:</label>
-            <label>Pages:</label>
+            <?php
+            get_book_info($book_id);
+            ?>
+            <label>Authors:</label>
+
         </div>
         <hr>
         <div class="options">
