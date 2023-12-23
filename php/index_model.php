@@ -8,6 +8,15 @@ function fetch_books_main(object $pdo)
     return $stmt;
 }
 
+function fetch_search_results($pdo, $search)
+{
+    $query = "SELECT * FROM books WHERE LOWER(title) LIKE LOWER(:search)";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(":search", '%' . $search . '%', PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt;
+}
+
 function fetch_books_filtered(object $pdo, array $genres, string $name, string $lastname, string $publisher)
 {
     $books = array();

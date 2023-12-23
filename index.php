@@ -28,9 +28,9 @@ require_once 'php/topnav_contr.php'
             <?php } ?>
 
             <div class="search-wrap">
-                <form>
-                    <input type="text" class="search" placeholder="Search">
-                    <button type="submit" class="search-button">Go</button>
+                <form method="get">
+                    <input type="text" class="search" name="search_value" placeholder="Search">
+                    <button type="submit" class="search-button" name="search">Go</button>
                 </form>
             </div>
             <?php
@@ -195,6 +195,69 @@ require_once 'php/topnav_contr.php'
 
 
         <div class="main-content">
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["search"])) {
+                $search = $_GET["search_value"];
+
+                require "php/connection.php";
+                require_once "php/index_model.php";
+
+                $stmt = fetch_search_results($pdo, $search);
+                if ($stmt)
+                {
+                    if ($stmt->rowCount() == 0)
+                    {
+                        echo "<p style='padding: 8px; color: #3D2410FF'>Nothing to show</p>";
+                        $stmt = null;
+                        die();
+                    }
+
+                    $counter = 0;
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                        if ($counter == 0) //two half-rows in single row
+                        {
+                            echo "<div class='row'>";
+                        }
+
+                        echo "<div class='half-row'>";
+
+                        set_book_display($row);
+
+                        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            set_book_display($row);
+                        }
+
+                        echo "</div>";
+                        $counter++;
+                        if ($counter == 2) //end of row
+                        {
+                            echo "</div>";
+                            $counter = 0;
+                        }
+                    }
+                    if ($counter < 2) //empty rows so that it all looks nice
+                    {
+                        $i = $counter;
+                        while ($i < 2)
+                        {
+                            echo "<div class='half-row'>";
+                            echo "</div>";
+                            $i++;
+                        }
+                    }
+                    if ($counter % 2 != 0)
+                    {
+                        echo "</div>"; //in case the number of books isn't divisible by 2
+                    }
+
+                    $stmt = null;
+                    die(); // it's thanks to this that the other books don't get displayed
+                }
+            }
+            ?>
+
+
             <?php
             if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["apply"])) {
 
