@@ -14,8 +14,8 @@ require_once 'topnav_contr.php'
     <?php } ?>
 
     <div class="search-wrap">
-        <form>
-            <input type="text" class="search" placeholder="Search">
+        <form method="get" action="../index.php">
+            <input type="text" class="search" name="search_value" placeholder="Search">
             <button type="submit" class="search-button">Go</button>
         </form>
     </div>

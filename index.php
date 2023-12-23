@@ -29,8 +29,11 @@ require_once 'php/topnav_contr.php'
 
             <div class="search-wrap">
                 <form method="get">
-                    <input type="text" class="search" name="search_value" placeholder="Search">
-                    <button type="submit" class="search-button" name="search">Go</button>
+                    <?php
+                    $incoming_search = $_GET['incoming_search'] ?? null;
+                    echo "<input type='text' value='$incoming_search' class='search' name='search_value' placeholder='Search'>"
+                    ?>
+                    <button type="submit" class="search-button">Go</button>
                 </form>
             </div>
             <?php
@@ -196,7 +199,7 @@ require_once 'php/topnav_contr.php'
 
         <div class="main-content">
             <?php
-            if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["search"])) {
+            if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["search_value"])) {
                 $search = $_GET["search_value"];
 
                 require "php/connection.php";
