@@ -26,25 +26,59 @@ require_once '../php/topnav_contr.php';
         Basket
     </h2>
 
-    <form class="basket-form">
+    <script>
+        function displayItems() {
+            // Retrieve items from localStorage
+            const items = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        <div class="items">
-            <div class="item-wrap">
-                <label class='item-content' style='width: 25%'>Title: </label>
-                <label class='item-content' style='width: 25%'>Price: </label>
-                <label class='item-content' style='width: 25%'>Time Period: </label>
-                <button type='submit' name='delete_item'>Delete</button>
-            </div>
-            <div class="item-wrap">
-                <label class='item-content' style='width: 25%'>Title: </label>
-                <label class='item-content' style='width: 25%'>Price: </label>
-                <label class='item-content' style='width: 25%'>Time Period: </label>
-                <button type='submit' name='delete_item'>Delete</button>
-            </div>
+            // Display items in a list
+            let list = "<div class='items'>";
+            items.forEach(function(item, index) {
+                list += "<div class='item-wrap'>";
+                list += "<label class='item-content' style='width: 25%'>" + item.title + " </label>";
+                list += "<label class='item-content' style='width: 25%'>" + item.price.toFixed(2) + " $</label>"
+                if (parseInt(item.time) === 0)
+                {
+                    list += "<label class='item-content' style='width: 25%'>Forever</label>"
+                }
+                else if (parseInt(item.time) === 30 || parseInt(item.time) === 7)
+                {
+                    list += "<label class='item-content' style='width: 25%'>" + item.time + " Days</label>"
+                }
+                else list += "<label class='item-content' style='width: 25%'>" + item.time + " Hours</label>"
+                list += "<button onclick='removeItem(" + index + ")'>Delete</button>";
+                list += "</div>";
+            });
+            list += "</div>";
+
+            // Display the list in the HTML
+            document.getElementById("basket-wrap").innerHTML = list;
+        }
+
+        function setItemsToLocalStorage(items) {
+            localStorage.setItem('cartItems', JSON.stringify(items));
+        }
+
+        function removeItem(index) {
+            // Retrieve items from localStorage
+            const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Remove the item from the array and update localStorage
+            items.splice(index, 1);
+            setItemsToLocalStorage(items);
+
+            // Regenerate the list
+            displayItems();
+        }
+    </script>
+
+    <form class="basket" id="basket">
+        <div id="basket-wrap">
+            <script>
+                displayItems();
+            </script>
         </div>
-
         <button class="basket-submit" type="submit">Continue</button>
-
     </form>
 
 </div>

@@ -144,7 +144,7 @@ $book_id = $_GET['id'] ?? null;
         localStorage.setItem("cartItems", JSON.stringify(existingItems));
 
         let notification = "<div class='notification-wrap'>";
-        notification += "<p class='notification'>Added item to basket</p>"
+        notification += "<p class='notification'>Added " +  cartItem.title + " to the basket</p>"
         notification += "</div>";
         document.getElementById("notifications").innerHTML = notification;
 
@@ -178,7 +178,7 @@ $book_id = $_GET['id'] ?? null;
         localStorage.setItem("cartItems", JSON.stringify(existingItems));
 
         let notification = "<div class='notification-wrap'>";
-        notification += "<p class='notification'>Added item to basket</p>"
+        notification += "<p class='notification'>Added " +  cartItem.title + " to the basket</p>"
         notification += "</div>";
         document.getElementById("notifications").innerHTML = notification;
 
