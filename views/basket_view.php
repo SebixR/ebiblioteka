@@ -1,6 +1,5 @@
 <?php
 require_once '../php/config_session.php';
-require_once '../php/basket.php';
 require_once '../php/topnav_contr.php';
 ?>
 
