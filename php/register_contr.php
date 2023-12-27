@@ -55,3 +55,8 @@ function create_user(object $pdo, string $name, string $lastname, string $email,
 {
     set_user($pdo, $name, $lastname, $email, $password);
 }
+
+function create_bookcase(object $pdo, int $user_id): void
+{
+    set_bookcase($pdo, $user_id);
+}

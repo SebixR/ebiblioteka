@@ -1,3 +1,8 @@
+<?php
+require_once '../php/config_session.php';
+require_once '../php/my_books_contr.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +20,18 @@
     ?>
 </header>
 
+<?php
+if (isset($_SESSION["user_id"])) {
+    $user_id = $_SESSION["user_id"];
+?>
+
 <div class="borrowed-h">
     <h2>Borrowed</h2>
 </div>
 <div class="borrowed-wrap">
+    <?php
+    get_borrowed_books($user_id);
+    ?>
     <div class="borrowed-imgs">
         <div class="item">
             <a href="#Book">
@@ -96,5 +109,8 @@
     </div>
 </div>
 
+<?php
+}
+?>
 
 </body>
