@@ -16,7 +16,6 @@ body {
   justify-content: center;
   position: relative;
   height: 100%;
-  user-select: none;
 }
 
 @import "topnav";
@@ -41,6 +40,7 @@ body {
     max-width: 500px;
     min-height: 700px;
     max-height: 800px;
+    margin-top: 4px;
   }
 
   .cover {
@@ -58,6 +58,7 @@ body {
   flex-direction: column;
   position: relative;
   height: 100%;
+  min-height: 700px;
   width: 50%;
   margin: 20px auto;
   text-align: start;
@@ -67,8 +68,8 @@ body {
     flex-direction: column;
     width: 70%;
     max-width: 500px;
-    height: 90%;
-    max-height: 450px;
+    height: 100%;
+    min-height: 650px;
     background-color: $color-main;
     border-radius: 10px;
     justify-content: space-between;
@@ -84,6 +85,17 @@ body {
     margin-left: 20px;
     margin-bottom: 24px;
     top: 24px;
+
+    .authors-or-genres{
+      padding: 4px;
+      width: 90%;
+
+      label {
+        color: $color-dark;
+        font-size: 14pt;
+        padding: 4px;
+      }
+    }
   }
 
   .info label{
@@ -112,6 +124,85 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .dropdown {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .borrow-options {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      flex-direction: column;
+      width: 300px;
+      background-color: $color-light;
+      padding: 8px;
+      border-radius: 10px;
+
+      label {
+        padding: 6px 6px 6px 6px;
+        color: $color-dark;
+        font-size: 14pt;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .price-check {
+        float: right;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .checkmark {
+        float: right;
+        display: inline-block;
+        position: relative;
+        height: 25px;
+        width: 25px;
+        outline: $color-main solid 1.5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      label:hover .price-check ~ .checkmark {
+        background-color: $color-main;
+      }
+
+      .price-check:checked ~ .checkmark {
+        background-color: $color-light;
+      }
+
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .price-check:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid $color-dark;
+        border-width: 0 2px 2px 0;
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+
+    .show {
+      display: flex;
+      margin-top: 54px;
+    }
   }
 
   .option label, button {
@@ -143,12 +234,26 @@ body {
     width: 80%;
     align-self: center;
   }
+}
+
+.summary-wrap{
+  width: 100%;
+  position: relative;
+  display: flex;
+  margin: 24px auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h3 {
+    padding: 4px;
+  }
 
   .summary {
+    position: relative;
     margin-top: 24px;
     padding: 12px;
     width: 70%;
-    max-width: 500px;
     max-height: 300px;
     overflow: auto;
     box-shadow: 0 0 15px $color-main;
@@ -161,6 +266,8 @@ body {
     box-shadow: none;
   }
 }
+
+
 
 @media (max-width: 800px) {
   .left-wrap, .right-wrap {
