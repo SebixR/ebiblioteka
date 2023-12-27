@@ -22,9 +22,9 @@ require_once '../php/topnav_contr.php';
         ?>
     </header>
 
-    <h2>
+    <h3>
         Basket
-    </h2>
+    </h3>
 
     <script>
         function displayItems() {
@@ -69,6 +69,19 @@ require_once '../php/topnav_contr.php';
 
             // Regenerate the list
             displayItems();
+            displayTotalPrice()
+        }
+
+        function displayTotalPrice()
+        {
+            // Retrieve items from localStorage
+            const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+            let price = 0;
+            items.forEach(function(item, index) {
+                price += item.price;
+            });
+
+            document.getElementById("total").innerHTML = "Total: " + price + " $";
         }
     </script>
 
@@ -78,6 +91,13 @@ require_once '../php/topnav_contr.php';
                 displayItems();
             </script>
         </div>
+
+        <h3 id="total"></h3>
+
+        <script>
+            displayTotalPrice();
+        </script>
+
         <button class="basket-submit" type="submit">Continue</button>
     </form>
 
