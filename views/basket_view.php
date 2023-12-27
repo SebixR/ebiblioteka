@@ -26,26 +26,26 @@ require_once '../php/topnav_contr.php';
         Basket
     </h2>
 
-    <div class="basket-form">
+    <form class="basket-form">
 
         <div class="items">
-            <form class="item-wrap">
+            <div class="item-wrap">
                 <label class='item-content' style='width: 25%'>Title: </label>
                 <label class='item-content' style='width: 25%'>Price: </label>
                 <label class='item-content' style='width: 25%'>Time Period: </label>
                 <button type='submit' name='delete_item'>Delete</button>
-            </form>
-            <form class="item-wrap">
+            </div>
+            <div class="item-wrap">
                 <label class='item-content' style='width: 25%'>Title: </label>
                 <label class='item-content' style='width: 25%'>Price: </label>
                 <label class='item-content' style='width: 25%'>Time Period: </label>
                 <button type='submit' name='delete_item'>Delete</button>
-            </form>
+            </div>
         </div>
 
         <button class="basket-submit" type="submit">Continue</button>
 
-    </div>
+    </form>
 
 </div>
 </body>

@@ -1,4 +1,5 @@
 @import "../colors";
+@import "notification";
 
 *{
   box-sizing: border-box;
@@ -19,6 +20,11 @@ body {
 }
 
 @import "topnav";
+
+.notification-wrap {
+  width: 100%;
+  margin: 8px auto
+}
 
 .left-wrap {
   float: left;

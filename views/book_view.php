@@ -20,6 +20,8 @@ require_once '../php/book_contr.php';
     ?>
 </header>
 
+<div class="notification-wrap" id="notifications"></div>
+
 <?php
 $book_id = $_GET['id'] ?? null;
 ?>
@@ -45,15 +47,14 @@ $book_id = $_GET['id'] ?? null;
                 <?php
                 get_borrow_prices($book_id);
                 ?>
-
-                <button type="submit">Borrow</button>
+                <button onclick="addBorrowedToLocalStorage()">Borrow</button>
             </div>
-            <form class="option">
+            <div class="option">
                 <?php
                 get_purchase_price($book_id);
                 ?>
-                <button type="submit">Purchase</button>
-            </form>
+                <button onclick="addPurchasedToLocalStorage()">Purchase</button>
+            </div>
 
             <script>
                 function showPrices() {
@@ -93,9 +94,7 @@ $book_id = $_GET['id'] ?? null;
                     }
                 }
             </script>
-
         </div>
-        <button type="submit">Add to Basket</button>
     </div>
 </div>
 
@@ -108,5 +107,99 @@ $book_id = $_GET['id'] ?? null;
     ?>
 </div>
 
+<script>
+    function addBorrowedToLocalStorage() {
+        // Get input values
+        const itemName = document.getElementById("title").value;
+        const itemId = document.getElementById("id").value;
+        const itemPrice = document.querySelector('input[name="prices"]:checked').value;
+
+        const radio1Selected = document.getElementById('price1').checked;
+        const radio2Selected = document.getElementById('price2').checked;
+        const radio3Selected = document.getElementById('price3').checked;
+        let itemTime = 30; //time is 30 by default
+        if (radio1Selected) {
+            itemTime = 30;
+        } else if (radio2Selected) {
+            itemTime = 7;
+        } else if (radio3Selected) {
+            itemTime = 24;
+        }
+
+        // Create an object to represent the cart item
+        const cartItem = {
+            title: itemName,
+            id: parseInt(itemId),
+            price: parseFloat(itemPrice),
+            time: itemTime
+        };
+
+        // Retrieve existing items from localStorage
+        const existingItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Add the new item to the array
+        existingItems.push(cartItem);
+
+        // Save the updated array back to localStorage
+        localStorage.setItem("cartItems", JSON.stringify(existingItems));
+
+        let notification = "<div class='notification-wrap'>";
+        notification += "<p class='notification'>Added item to basket</p>"
+        notification += "</div>";
+        document.getElementById("notifications").innerHTML = notification;
+
+        //displayItems();
+        //localStorage.clear();
+    }
+
+    function addPurchasedToLocalStorage() {
+        // Get input values
+        const itemName = document.getElementById("title").value;
+        const itemId = document.getElementById("id").value;
+        const itemPrice = document.getElementById("price").value;
+
+        let itemTime = 0;
+
+        // Create an object to represent the cart item
+        const cartItem = {
+            title: itemName,
+            id: parseInt(itemId),
+            price: parseFloat(itemPrice),
+            time: itemTime
+        };
+
+        // Retrieve existing items from localStorage
+        const existingItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Add the new item to the array
+        existingItems.push(cartItem);
+
+        // Save the updated array back to localStorage
+        localStorage.setItem("cartItems", JSON.stringify(existingItems));
+
+        let notification = "<div class='notification-wrap'>";
+        notification += "<p class='notification'>Added item to basket</p>"
+        notification += "</div>";
+        document.getElementById("notifications").innerHTML = notification;
+
+        //displayItems();
+        //localStorage.clear();
+    }
+
+    function displayItems() {
+        // Retrieve items from localStorage
+        const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Display items in a list
+        let list = "<ul>";
+        items.forEach(function(item) {
+            list += "<li>" + item.title + " - $" + item.price.toFixed(2) + " - Time: " + item.time + "</li>";
+        });
+        list += "</ul>";
+
+        // Display the list in the HTML
+        document.getElementById("notifications").innerHTML = list;
+    }
+</script>
 
 </body>

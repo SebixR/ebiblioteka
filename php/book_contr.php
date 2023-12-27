@@ -26,11 +26,15 @@ function get_book_info(int $book_id): void
     $publisher = get_publisher_name($publisher_id);
     $release_date = $row['release_date'];
     $pages = $row['page_number'];
+    $price = $row['purchase_price'];
     $stmt = null;
 
     $stmt = fetch_authors($pdo, $book_id);
 
     echo "<label>Title: $title</label>";
+    echo "<input type='hidden' value='$title' id='title'>";
+    echo "<input type='hidden' value=$book_id id='id'>";
+    echo "<input type='hidden' value=$price id='price'>";
     echo "<label>Author/s:</label>";
     echo "<div class='authors-or-genres'>";
     if ($stmt)
@@ -120,20 +124,20 @@ function get_borrow_prices(int $book_id): void
     echo "<label id='borrow_price_label'>Pick a time period</label>";
     echo "<div class='dropdown'>";
     echo "<button onclick='showPrices()' class='borrow-drop' id='borrow_button'>Pick time</button>";
-    echo "<form id='dropdown-prices' class='borrow-options'>";
+    echo "<div id='dropdown-prices' class='borrow-options'>";
     echo "<label>";
-    echo "<input id='price1' name='prices' type='radio' value=$base_price class='price-check' onchange='get_current_price()'>30 Days: $base_price $";
+    echo "<input id='price1' name='prices' type='radio' value=$base_price class='price-check' onclick='get_current_price()' checked>30 Days: $base_price $";
     echo "<span class='checkmark'></span>";
     echo "</label>";
     echo "<label>";
-    echo "<input id='price2' name='prices' type='radio' value=$week_price class='price-check' onchange='get_current_price()'>7 Days: $week_price $";
+    echo "<input id='price2' name='prices' type='radio' value=$week_price class='price-check' onclick='get_current_price()'>7 Days: $week_price $";
     echo "<span class='checkmark'></span>";
     echo "</label>";
     echo "<label>";
-    echo "<input id='price3' name='prices' type='radio' value=$day_price class='price-check' onchange='get_current_price()'>24 Hours: $day_price $";
+    echo "<input id='price3' name='prices' type='radio' value=$day_price class='price-check' onclick='get_current_price()'>24 Hours: $day_price $";
     echo "<span class='checkmark'></span>";
     echo "</label>";
-    echo "</form>";
+    echo "</div>";
     echo "</div>";
 }
 
@@ -146,5 +150,5 @@ function get_purchase_price(int $book_id): void
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $price = $row['purchase_price'];
 
-    echo "<label>$price $</label>";
+    echo "<label id='price'>$price $</label>";
 }
