@@ -40,6 +40,7 @@ require_once 'php/topnav_contr.php'
             if (isset($_SESSION["user_id"])) { ?>
                 <div class="dropdown" onclick="dropDown()">
                     <button class="settings"></button>
+                    <a href="views/basket_view.php" class="basket"></a>
                     <div class="dropdown-content" id="dropdown">
                         <a href="#">
                             <button class="settings-button">Settings</button>
@@ -70,6 +71,7 @@ require_once 'php/topnav_contr.php'
             <?php } else { ?>
                 <div class="dropdown" onclick="dropDown()">
                     <button class="settings"></button>
+                    <a href="views/basket_view.php" class="basket"></a>
                     <div class="dropdown-content" id="dropdown">
                         <a href="views/register_view.php">
                             <button class="settings-button">Register</button>
