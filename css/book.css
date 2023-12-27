@@ -364,7 +364,6 @@ body {
   cursor: pointer;
   border-radius: 10px;
   font-size: 13pt;
-  transition: background-color 0.5s;
 }
 .right-wrap .option label {
   font-size: 17pt;
@@ -375,6 +374,17 @@ body {
   border: 1px solid #efdbb8;
   width: 80%;
   align-self: center;
+}
+
+button {
+  border: none;
+  width: 60%;
+  height: 45px;
+  background: #efdbb8;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 13pt;
+  margin: auto;
 }
 
 .summary-wrap {

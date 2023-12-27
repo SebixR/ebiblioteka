@@ -42,30 +42,18 @@ $book_id = $_GET['id'] ?? null;
         <hr>
         <div class="options">
             <div class="option">
-                <label id="borrow_price_label">Pick a time period</label>
-                <div class="dropdown">
-                    <button onclick="showPrices()" class="borrow-drop" id="borrow_button">Pick time</button>
-                    <form id="dropdown-prices" class="borrow-options">
-                        <label>
-                            <input id="price1" name="prices" type="radio" value="12.99" class='price-check' onchange='get_current_price()'>30 Days: 12.99$
-                            <span class='checkmark'></span>
-                        </label>
-                        <label>
-                            <input id="price2" name="prices" type="radio" value="2.99" class='price-check' onchange='get_current_price()'>7 Days: 2.99$
-                            <span class='checkmark'></span>
-                        </label>
-                        <label>
-                            <input id="price3" name="prices" type="radio" value="0.99" class='price-check' onchange='get_current_price()'>24 Hours: 0.99$
-                            <span class='checkmark'></span>
-                        </label>
-                    </form>
-                </div>
+                <?php
+                get_borrow_prices($book_id);
+                ?>
 
+                <button type="submit">Borrow</button>
             </div>
-            <div class="option">
-                <label>Price</label>
-                <button>Purchase</button>
-            </div>
+            <form class="option">
+                <?php
+                get_purchase_price($book_id);
+                ?>
+                <button type="submit">Purchase</button>
+            </form>
 
             <script>
                 function showPrices() {
@@ -107,6 +95,7 @@ $book_id = $_GET['id'] ?? null;
             </script>
 
         </div>
+        <button type="submit">Add to Basket</button>
     </div>
 </div>
 

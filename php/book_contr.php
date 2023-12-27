@@ -105,3 +105,46 @@ function get_summary(int $book_id): void
     echo "$summary";
     echo "</article>";
 }
+
+function get_borrow_prices(int $book_id): void
+{
+    require "connection.php";
+    require_once "book_model.php";
+
+    $stmt = fetch_book_info($pdo, $book_id);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $base_price = $row['borrow_price'];
+    $week_price = number_format($base_price * 0.4 + 1, 2);
+    $day_price = number_format($base_price * 0.1 + 0.5, 2);
+
+    echo "<label id='borrow_price_label'>Pick a time period</label>";
+    echo "<div class='dropdown'>";
+    echo "<button onclick='showPrices()' class='borrow-drop' id='borrow_button'>Pick time</button>";
+    echo "<form id='dropdown-prices' class='borrow-options'>";
+    echo "<label>";
+    echo "<input id='price1' name='prices' type='radio' value=$base_price class='price-check' onchange='get_current_price()'>30 Days: $base_price $";
+    echo "<span class='checkmark'></span>";
+    echo "</label>";
+    echo "<label>";
+    echo "<input id='price2' name='prices' type='radio' value=$week_price class='price-check' onchange='get_current_price()'>7 Days: $week_price $";
+    echo "<span class='checkmark'></span>";
+    echo "</label>";
+    echo "<label>";
+    echo "<input id='price3' name='prices' type='radio' value=$day_price class='price-check' onchange='get_current_price()'>24 Hours: $day_price $";
+    echo "<span class='checkmark'></span>";
+    echo "</label>";
+    echo "</form>";
+    echo "</div>";
+}
+
+function get_purchase_price(int $book_id): void
+{
+    require "connection.php";
+    require_once "book_model.php";
+
+    $stmt = fetch_book_info($pdo, $book_id);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $price = $row['purchase_price'];
+
+    echo "<label>$price $</label>";
+}
