@@ -20,6 +20,16 @@ function delete_book(object $pdo, int $book_id) {
     $stmt->bindParam(":book_id", $book_id);
     $stmt->execute();
 
+    $query = "DELETE FROM purchased WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->execute();
+
+    $query = "DELETE FROM borrowed WHERE book_id = :book_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->execute();
+
     $query = "DELETE FROM books WHERE book_id = :book_id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":book_id", $book_id);

@@ -33,7 +33,7 @@ function set_user(object $pdo, string $name, string $lastname, string $email, st
 
 function set_bookcase($pdo, $user_id): void
 {
-    $query = "INSERT INTO bookcases (user_id, book_amount, max_book_amount) VALUES (:user_id, 0, 200)";
+    $query = "INSERT INTO bookcases (user_id) VALUES (:user_id)";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":user_id", $user_id);
     $stmt->execute();

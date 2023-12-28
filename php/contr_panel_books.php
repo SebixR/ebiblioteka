@@ -6,7 +6,6 @@ function get_books(): void
 {
     require "connection.php";
     require_once "contr_panel_books_model.php";
-    require_once "contr_panel_books_contr.php";
 
     $stmt = fetch_books($pdo);
     if ($stmt)

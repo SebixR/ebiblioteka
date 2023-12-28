@@ -10,11 +10,6 @@ function set_purchased(object $pdo, int $bookcase_id, int $book_id): void
     $stmt->bindParam(":bookcase_id", $bookcase_id);
     $stmt->execute();
     $stmt = null;
-
-    $query = "UPDATE bookcases SET book_amount = book_amount + 1 WHERE bookcase_id = :bookcase_id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(":bookcase_id", $bookcase_id);
-    $stmt->execute();
 }
 
 function set_borrowed(object $pdo, int $bookcase_id, int $book_id, string $date): void
@@ -26,11 +21,6 @@ function set_borrowed(object $pdo, int $bookcase_id, int $book_id, string $date)
     $stmt->bindParam(":date", $date);
     $stmt->execute();
     $stmt = null;
-
-    $query = "UPDATE bookcases SET book_amount = book_amount + 1 WHERE bookcase_id = :bookcase_id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(":bookcase_id", $bookcase_id);
-    $stmt->execute();
 }
 
 function fetch_bookcase(object $pdo, int $user_id): int

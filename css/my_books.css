@@ -311,6 +311,7 @@ body {
 }
 
 .purchased-wrap {
+  min-height: 300px;
   position: relative;
   display: flex;
   width: 98%;
