@@ -36,13 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pay"])) {
                 }
 
                 $formatted_time = $current_time->format('Y-m-d H:i:s');
-                echo "<p>$formatted_time</p>";
 
                 set_borrowed($pdo, $bookcase_id, $book_ids[$i], $formatted_time);
             }
         }
 
-        header("Location: ../views/my_books_view.php");
+        header("Location: ../views/my_books_view.php?purchase_successful");
         $pdo = null;
         $stmt = null;
 

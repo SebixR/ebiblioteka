@@ -23,6 +23,15 @@ require_once '../php/my_books_contr.php';
 <?php
 if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];
+
+    if (isset($_GET['purchase_successful']))
+    {
+        ?>
+            <script>
+                localStorage.clear();
+            </script>
+        <?php
+    }
 ?>
 
 <div class="borrowed-h">
@@ -32,32 +41,6 @@ if (isset($_SESSION["user_id"])) {
     <?php
     get_borrowed_books($user_id);
     ?>
-    <div class="borrowed-imgs">
-        <div class="item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" class="img" alt="Book">
-            </a>
-            <label class="time-label">Time left</label>
-        </div>
-        <div class="item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" class="img" alt="Book">
-            </a>
-            <label class="time-label">Time left</label>
-        </div>
-        <div class="item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" class="img" alt="Book">
-            </a>
-            <label class="time-label">Time left</label>
-        </div>
-        <div class="item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" class="img" alt="Book">
-            </a>
-            <label class="time-label">Time left</label>
-        </div>
-    </div>
 </div>
 
 <div class="purchased-h">
