@@ -200,6 +200,12 @@ body {
   background-position: 100% 0;
 }
 
+.main {
+  max-width: 2000px;
+  margin: auto;
+  user-select: none;
+}
+
 .borrowed-h {
   position: relative;
   display: flex;
@@ -240,6 +246,8 @@ body {
   margin-left: 12px;
   margin-right: 12px;
   overflow-y: hidden;
+  scrollbar-color: #DBB280 #efdbb8;
+  scrollbar-width: thin;
 }
 
 .item {
@@ -261,6 +269,7 @@ body {
 }
 
 .time-label {
+  max-width: 145px;
   display: block;
   opacity: 0;
   color: #3d2410;
@@ -328,6 +337,8 @@ body {
   border-radius: 10px;
   margin: 8px auto;
   justify-content: flex-start;
+  scrollbar-color: #DBB280 #efdbb8;
+  scrollbar-width: thin;
 }
 
 .row-item {

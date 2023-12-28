@@ -40,6 +40,8 @@
   margin-left: 12px;
   margin-right: 12px;
   overflow-y: hidden;
+  scrollbar-color: $color-main $color-light;
+  scrollbar-width: thin;
 }
 
 .item {
@@ -61,6 +63,7 @@
 }
 
 .time-label {
+  max-width: 145px;
   display: block;
   opacity: 0;
   color: $color-dark;

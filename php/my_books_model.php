@@ -11,6 +11,15 @@ function fetch_borrowed_books($pdo, $bookcase_id)
     return $stmt;
 }
 
+function fetch_purchased_books($pdo, $bookcase_id)
+{
+    $query = "SELECT * FROM purchased WHERE bookcase_id = :bookcase_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":bookcase_id", $bookcase_id);
+    $stmt->execute();
+    return $stmt;
+}
+
 function fetch_bookcase(object $pdo, int $user_id)
 {
     $query = "SELECT * FROM bookcases WHERE user_id = :user_id";

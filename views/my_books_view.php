@@ -34,63 +34,29 @@ if (isset($_SESSION["user_id"])) {
     }
 ?>
 
-<div class="borrowed-h">
-    <h2>Borrowed</h2>
-</div>
-<div class="borrowed-wrap">
-    <?php
-    get_borrowed_books($user_id);
-    ?>
-</div>
-
-<div class="purchased-h">
-    <h2>Purchased</h2>
-</div>
-<div class="purchased-wrap">
-    <div class="row">
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" alt="Book">
-            </a>
+    <div class="main">
+        <div class="borrowed-h">
+            <h2>Borrowed</h2>
         </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/lotr_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" alt="Book">
-            </a>
-        </div>
-        <div class="row-item">
-            <a href="#Book">
-                <img src="../images/hp_cover.jpg" alt="Book">
-            </a>
+        <div class="borrowed-wrap">
+            <?php
+            get_borrowed_books($user_id);
+            ?>
         </div>
 
+        <div class="purchased-h">
+            <h2>Purchased</h2>
+        </div>
+        <div class="purchased-wrap">
+            <div class="row">
+
+                <?php
+                get_purchased_books($user_id);
+                ?>
+
+            </div>
+        </div>
     </div>
-</div>
 
 <?php
 }
