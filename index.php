@@ -42,7 +42,8 @@ require_once 'php/topnav_contr.php'
                     <button class="settings"></button>
                     <a href="views/basket_view.php" class="basket"></a>
                     <div class="dropdown-content" id="dropdown">
-                        <a href="#">
+                        <a href="views/user_settings_view.php">
+                        <a href="views/user_settings_view.php">
                             <button class="settings-button">Settings</button>
                         </a>
                         <form action="php/logout.php" method="post" class="log-out">

@@ -34,7 +34,8 @@ if (isset($_SESSION["user_id"])) { //check if the user is logged in
     }
 }
 
-function regenerate_session_id_loggedin() {
+function regenerate_session_id_loggedin(): void
+{
     session_regenerate_id(true);
 
     $userId = $_SESSION["user_id"];
@@ -45,7 +46,8 @@ function regenerate_session_id_loggedin() {
     $_SESSION["last_regeneration"] = time();
 }
 
-function regenerate_session_id() {
+function regenerate_session_id(): void
+{
     session_regenerate_id(true);
     $_SESSION["last_regeneration"] = time();
 }
