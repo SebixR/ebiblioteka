@@ -1,0 +1,248 @@
+@import "../colors";
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", serif;
+}
+
+body {
+  background: $color-background;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+@import "topnav";
+
+@import "main";
+
+.methods {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 700px;
+  background-color: $color-main;
+  border-radius: 10px;
+  margin: 24px auto;
+  padding: 8px;
+
+  .radio-inputs {
+    right: -95%;
+    cursor: pointer;
+    width: 0;
+    padding: 4px;
+    position: relative;
+    top: 12%;
+
+    input {
+      display: none;
+    }
+
+    .radio-indicator {
+      display: block;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid $color-light;
+      border-radius: 50%;
+      background-color: $color-main;
+    }
+
+    input:checked + .radio-indicator {
+      background-color: $color-background;
+      box-shadow: 0 0 5px $color-light;
+    }
+  }
+
+
+  .online-transfer, .card, .paypal {
+    color: $color-dark;
+    font-size: 14pt;
+    padding: 8px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-button {
+    margin: 16px auto;
+    width: 90%;
+    border: none;
+    border-radius: 10px;
+    color: $color-dark;
+    background-color: $color-main;
+    outline: $color-light solid 1.5px;
+    transition: background-color 0.3s;
+    text-align: center;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .dropdown-button:hover{
+    background-color: $color-light;
+  }
+
+  .dropdown-content {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    flex-direction: column;
+    align-self: center;
+    width: 80%;
+    background-color: $color-light;
+    padding: 8px;
+    margin: 88px auto;
+    border-radius: 10px;
+
+    label {
+      padding: 4px;
+      color: $color-dark;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    label:hover {
+      outline: $color-main solid 1.5px;
+    }
+  }
+
+  .card-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 16px;
+
+    .card-inputs-row {
+      width: 100%;
+    }
+
+    input {
+      height: 24px;
+      width: 45%;
+      padding: 4px;
+      margin: 8px;
+      border: none;
+      border-radius: 10px;
+      color: $color-dark;
+      background-color: $color-main;
+      outline: $color-light solid 1.5px;
+      transition: background-color 0.2s ease-out 0.1s;
+    }
+
+    input:focus {
+      background-color: $color-light;
+    }
+  }
+
+  .paypal {
+    input {
+      height: 24px;
+      width: 80%;
+      padding: 4px;
+      margin: 16px auto;
+      border: none;
+      border-radius: 10px;
+      color: $color-dark;
+      background-color: $color-main;
+      outline: $color-light solid 1.5px;
+      transition: background-color 0.2s ease-out 0.1s;
+    }
+
+    input:focus {
+      background-color: $color-light;
+    }
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    margin: 8px;
+    padding: 8px;
+
+    label {
+      color: $color-dark;
+      margin: 8px;
+      font-size: 14pt;
+      font-weight: bold;
+    }
+
+    .pay {
+      position: relative;
+      width: 100%;
+      color: $color-dark;
+      border: none;
+      border-radius: 10px;
+      padding: 8px;
+      background-color: $color-light;
+      cursor: pointer;
+      font-size: 14pt;
+      margin: 8px;
+    }
+  }
+
+  hr {
+    border: 1px solid $color-light;
+    width: 100%;
+  }
+}
+
+.basket-reminder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    color: $color-dark;
+    padding: 8px;
+    align-self: center;
+  }
+
+  .items {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+
+    .item-wrap {
+      background-color: $color-light;
+      width: 50%;
+      height: 50px;
+      padding-left: 16px;
+      padding-right: 16px;
+      margin: 8px;
+      border-radius: 10px;
+      box-shadow: 0 2px 2px $color-shadow;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .item-content {
+        padding: 8px;
+        min-width: 115px;
+        color: $color-dark;
+        display: flex;
+        justify-content: center;
+      }
+
+      label {
+        padding: 4px;
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  .methods {
+    width: 100%;
+  }
+}

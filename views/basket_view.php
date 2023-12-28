@@ -76,7 +76,7 @@ require_once '../php/topnav_contr.php';
             // Retrieve items from localStorage
             const items = JSON.parse(localStorage.getItem("cartItems")) || [];
             let price = 0;
-            items.forEach(function(item, index) {
+            items.forEach(function(item) {
                 price += item.price;
             });
 
@@ -84,7 +84,7 @@ require_once '../php/topnav_contr.php';
         }
     </script>
 
-    <form class="basket" id="basket">
+    <div class="basket" id="basket">
         <div id="basket-wrap">
             <script>
                 displayItems();
@@ -97,8 +97,11 @@ require_once '../php/topnav_contr.php';
             displayTotalPrice();
         </script>
 
-        <button class="basket-submit" type="submit">Continue</button>
-    </form>
+        <a href="checkout_view.php">
+            <button class="basket-submit">Continue</button>
+        </a>
+
+    </div>
 
 </div>
 </body>
