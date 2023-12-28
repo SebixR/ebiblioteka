@@ -82,6 +82,8 @@ require_once '../php/topnav_contr.php';
 
             document.getElementById("total").innerHTML = "Total: " + price + " $";
         }
+
+
     </script>
 
     <div class="basket" id="basket">
@@ -98,8 +100,22 @@ require_once '../php/topnav_contr.php';
         </script>
 
         <a href="checkout_view.php">
-            <button class="basket-submit">Continue</button>
+            <button class="basket-submit" id="continue">Continue</button>
         </a>
+
+        <script>
+            function lockContinueButton()
+            {
+                const button = document.getElementById('continue');
+                // Retrieve items from localStorage
+                const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+                if (items.length === 0)
+                {
+                    button.disabled = true;
+                }
+            }
+            lockContinueButton();
+        </script>
 
     </div>
 
