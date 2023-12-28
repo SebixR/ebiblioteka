@@ -10,7 +10,7 @@ require_once '../php/user_settings_contr.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="../css/user_settings.css">
 </head>
 <body>
@@ -29,20 +29,24 @@ require_once '../php/user_settings_contr.php';
 
     <div class="register">
         <h3>Edit account information</h3>
-        <form action="../php/register.php" method="post" class="register-form">
+        <form action="../php/user_settings.php" method="post" class="register-form">
             <div class="register-content">
                 <?php
                 get_user_info($user_id);
+                echo "<input type='hidden' value='$user_id' name='user_id'>"
                 ?>
                 <label> New Password
                     <input type="password" class="textbox" name="password" placeholder="Password">
                 </label>
                 <label> Confirm New Password
-                    <input type="password" class="textbox" name="password_repeat" placeholder="Password">
+                    <input type="password" class="textbox" name="password_confirm" placeholder="Password">
                 </label>
             </div>
             <button name="submit" class="register-button">Apply</button>
         </form>
+        <?php
+        check_settings_error();
+        ?>
     </div>
 
         <?php
