@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {//did the user access this form legitimately
     $name = strtolower($_POST["name"]);
+    $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
     $lastname = strtolower($_POST["lastname"]);
+    $lastname = htmlspecialchars($lastname, ENT_QUOTES, 'UTF-8');
     $email = $_POST["email"];
+    $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
     $password = $_POST["password"];
+    $password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
     $password_reap = $_POST["password_repeat"];
+    $password_reap = htmlspecialchars($password_reap, ENT_QUOTES, 'UTF-8');
 
     try {
 

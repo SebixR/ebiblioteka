@@ -5,7 +5,9 @@ declare(strict_types=1);
 if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same thing as with registration
 
     $email = $_POST["email"];
+    $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
     $password = $_POST["password"];
+    $password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
 
     try {
         require_once 'connection.php';
