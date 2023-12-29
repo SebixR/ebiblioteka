@@ -40,7 +40,7 @@ require_once '../php/login.php';
             </div>
             <button type="submit" name="submit" class="button">Login</button>
         </form>
-        <a href="#Password_change" class="forgot">Forgot your password?</a>
+        <a href="forgot_password_view.php" class="forgot">Forgot your password?</a>
         <div class="or-register">
             <hr>
             <span>Don't have an account?</span>
