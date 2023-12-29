@@ -6,10 +6,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pay"])) {
     $book_ids = (array)$_POST["book_id"];
     $book_prices = (array)$_POST["book_price"];
     $book_times = (array)$_POST["book_time"];
+    $method = (int)$_POST["methods"];
 
     try {
         require "connection.php";
         require_once "checkout_model.php";
+
+        $total_price = 0;
+        foreach ($book_prices as $price)
+        {
+            $total_price += $price;
+        }
+
+        $stmt = set_order($pdo, $method, $user_id, $total_price);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $order_id = $row['order_id'];
 
         $bookcase_id = fetch_bookcase($pdo, $user_id);
 
@@ -18,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pay"])) {
             if ($book_times[$i] == 0) //purchased
             {
                 set_purchased($pdo, $bookcase_id, $book_ids[$i]);
+                $purchased = true;
             }
             else //borrowed
             {
@@ -38,7 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pay"])) {
                 $formatted_time = $current_time->format('Y-m-d H:i:s');
 
                 set_borrowed($pdo, $bookcase_id, $book_ids[$i], $formatted_time);
+                $purchased = false;
             }
+
+            add_book_to_order($pdo, $order_id, $book_ids[$i], $purchased);
         }
 
         header("Location: ../views/my_books_view.php?purchase_successful");

@@ -80,6 +80,8 @@ require_once '../php/topnav_contr.php';
                 price += item.price;
             });
 
+            price = price.toFixed(2);
+
             document.getElementById("total").innerHTML = "Total: " + price + " $";
         }
 

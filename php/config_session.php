@@ -4,10 +4,10 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_strict_mode', 1);
 
 session_set_cookie_params([
-    'lifetime' => 1800,
+    'lifetime' => 1800, // duration of cookie session, if the user's inactive for this long, they will be logged out
     'domain' => 'localhost',
     'path' => '/',
-    'secure' => true,
+    'secure' => true, //https
     'httponly' => true
 ]);
 

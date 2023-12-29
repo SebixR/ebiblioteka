@@ -37,6 +37,8 @@
                     price += item.price;
                 });
 
+                price = price.toFixed(2);
+
                 document.getElementById("total").innerHTML = "Total: " + price + " $";
             }
 
@@ -53,7 +55,7 @@
 
         <div class="methods">
             <label class="radio-inputs">
-                <input type="radio" name="methods" checked="checked">
+                <input type="radio" name="methods" value="1" checked="checked">
                 <span class="radio-indicator"></span>
             </label>
 
@@ -90,7 +92,7 @@
             </script>
 
             <label class="radio-inputs">
-                <input type="radio" name="methods">
+                <input type="radio" name="methods" value="2">
                 <span class="radio-indicator"></span>
             </label>
 
@@ -114,7 +116,7 @@
             <hr>
 
             <label class="radio-inputs">
-                <input type="radio" name="methods">
+                <input type="radio" name="methods" value="3">
                 <span class="radio-indicator"></span>
             </label>
             <div class="paypal">
