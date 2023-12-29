@@ -44,6 +44,9 @@ function regenerate_session_id_loggedin(): void
     session_id($sessionId);
 
     $_SESSION["last_regeneration"] = time();
+
+    require_once "my_books_contr.php";
+    check_borrowed_books($userId);
 }
 
 function regenerate_session_id(): void

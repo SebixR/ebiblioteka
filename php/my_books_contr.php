@@ -2,6 +2,46 @@
 
 declare(strict_types=1);
 
+function check_borrowed_books($user_id): void
+{
+    try {
+
+        require "connection.php";
+        require_once "my_books_model.php";
+
+        $stmt = fetch_bookcase($pdo, $user_id);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row)
+        {
+            $bookcase_id = $row['bookcase_id'];
+        }
+        else return;
+        $stmt = null;
+
+        $stmt = fetch_borrowed_books($pdo, $bookcase_id);
+        if ($stmt)
+        {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                $book_id = $row['book_id'];
+                $time = $row['rental_time'];
+
+                $rental_time = new DateTime($time);
+                $current_time = new DateTime();
+
+                if ($rental_time <= $current_time)
+                {
+                    give_book_back($pdo, $book_id, $bookcase_id, $time);
+                }
+            }
+        }
+
+    } catch (Exception $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+
+}
+
 function get_borrowed_books(int $user_id): void
 {
     require "connection.php";

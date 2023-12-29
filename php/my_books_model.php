@@ -2,6 +2,16 @@
 
 declare(strict_types=1);
 
+function give_book_back(object $pdo, int $book_id, int $bookcase_id, string $time): void
+{
+    $query = "DELETE FROM borrowed WHERE bookcase_id = :bookcase_id AND book_id = :book_id AND rental_time = :time";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":bookcase_id", $bookcase_id);
+    $stmt->bindParam(":book_id", $book_id);
+    $stmt->bindParam(":time", $time);
+    $stmt->execute();
+}
+
 function fetch_borrowed_books($pdo, $bookcase_id)
 {
     $query = "SELECT * FROM borrowed WHERE bookcase_id = :bookcase_id";

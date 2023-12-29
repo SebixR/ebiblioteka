@@ -24,6 +24,8 @@ require_once '../php/my_books_contr.php';
 if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];
 
+    check_borrowed_books($user_id);
+
     if (get_user_role($_SESSION["user_id"]) === 'admin') {
         $user_id = $_GET['id'] ?? null;
     }
