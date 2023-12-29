@@ -19,6 +19,7 @@ function get_borrowed_books(int $user_id): void
     echo "<div class='borrowed-imgs'>";
 
     $stmt = fetch_borrowed_books($pdo, $bookcase_id);
+    $counter = 0;
     if ($stmt)
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
@@ -36,8 +37,10 @@ function get_borrowed_books(int $user_id): void
             echo "</a>";
             echo "<a href='../books/lorem-ipsum.pdf' class='time-label'>$time</a>";
             echo "</div>";
+            $counter++;
         }
     }
+    if ($counter == 0) echo "<label style='color: #3d2410; padding: 8px'>No borrowed books found.</label>";
 
     echo "</div>";
 
@@ -58,6 +61,7 @@ function get_purchased_books(int $user_id): void
     $stmt = null;
 
     $stmt = fetch_purchased_books($pdo, $bookcase_id);
+    $counter = 0;
     if ($stmt)
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
@@ -73,6 +77,8 @@ function get_purchased_books(int $user_id): void
             echo "<img src='../images/$cover' alt='$title'>";
             echo "</a>";
             echo "</div>";
+            $counter++;
         }
     }
+    if ($counter == 0) echo "<label style='color: #3d2410; padding: 8px'>No purchased books found.</label>";
 }
