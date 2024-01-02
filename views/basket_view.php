@@ -121,5 +121,9 @@ require_once '../php/topnav_contr.php';
 
     </div>
 
+    <?php
+    require_once "../php/footer.php";
+    ?>
+
 </div>
 </body>

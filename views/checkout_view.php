@@ -187,5 +187,8 @@
     }
     ?>
 </div>
+<?php
+require_once "../php/footer.php";
+?>
 
 </body>

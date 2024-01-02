@@ -13,11 +13,17 @@ body {
   height: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 @import "topnav";
 
 @import "main";
 
 @import "borrowed";
+
+@import "footer";
 
 .purchased-h {
   position: relative;

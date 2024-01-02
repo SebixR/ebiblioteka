@@ -14,6 +14,10 @@ body {
   height: 100%;
 }
 
+html{
+  height: 100%;
+}
+
 @import "topnav";
 
 @import "main";
@@ -97,3 +101,5 @@ h3 {
 .basket-submit:hover {
   background-position: 100% 0;
 }
+
+@import "footer";

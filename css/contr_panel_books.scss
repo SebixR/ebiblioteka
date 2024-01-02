@@ -13,11 +13,17 @@ body {
   height: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 @import "topnav";
 
 @import "main";
 
 @import "contr_panel_menu";
+
+@import "footer";
 
 .books {
   position: relative;

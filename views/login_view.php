@@ -53,5 +53,8 @@ require_once '../php/login.php';
         ?>
     </div>
 </div>
+<?php
+require_once "../php/footer.php";
+?>
 </body>
 

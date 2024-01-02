@@ -56,4 +56,7 @@ require_once '../php/register.php';
     </div>
 
 </div>
+<?php
+require_once "../php/footer.php";
+?>
 </body>

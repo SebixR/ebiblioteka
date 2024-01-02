@@ -66,6 +66,7 @@ if (isset($_SESSION["user_id"])) {
 
 <?php
 }
+require_once "../php/footer.php";
 ?>
 
 </body>

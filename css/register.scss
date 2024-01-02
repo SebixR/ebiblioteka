@@ -14,7 +14,13 @@ body {
   height: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 @import "topnav";
+
+@import "footer";
 
 .register {
   margin: 65px auto;

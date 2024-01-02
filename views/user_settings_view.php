@@ -54,4 +54,7 @@ require_once '../php/user_settings_contr.php';
     ?>
 
 </div>
+<?php
+require_once "../php/footer.php";
+?>
 </body>
