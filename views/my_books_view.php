@@ -29,6 +29,7 @@ if (isset($_SESSION["user_id"])) {
     if (get_user_role($_SESSION["user_id"]) === 'admin') {
         $user_id = $_GET['id'] ?? null;
     }
+    if ($user_id == null) $user_id = $_SESSION["user_id"];
 
     if (isset($_GET['purchase_successful']))
     {
