@@ -117,8 +117,6 @@ require_once 'php/topnav_contr.php'
 
 
 <div class="main">
-
-
     <div class="slider-wrap">
         <div class="my-slides">
             <img src="images/banner1.jpg" class="slide-img fade">
