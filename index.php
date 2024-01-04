@@ -121,15 +121,15 @@ require_once 'php/topnav_contr.php'
 
     <div class="slider-wrap">
         <div class="my-slides">
-            <img src="images/banner.jpg" class="slide-img fade">
-        </div>
-
-        <div class="my-slides">
             <img src="images/banner1.jpg" class="slide-img fade">
         </div>
 
         <div class="my-slides">
-            <img src="images/banner.jpg" class="slide-img fade">
+            <img src="images/banner2.jpg" class="slide-img fade">
+        </div>
+
+        <div class="my-slides">
+            <img src="images/banner3.jpg" class="slide-img fade">
         </div>
 
         <a class="prev" onclick="plusSlides(-2)">&#10094;</a>
