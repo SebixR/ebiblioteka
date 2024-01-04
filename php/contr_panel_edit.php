@@ -23,6 +23,13 @@ if (isset($_POST["edit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $borrow = (float)$_POST["borrow"];
     $pages = (int)$_POST["pages"];
     $summary = $_POST["summary"];
+    $target_dir = "../images/";
+    $cover = $target_dir . basename($_FILES["cover"]["name"]);
+    if (!file_exists($cover))
+    {
+        move_uploaded_file($_FILES["fileInput"]["tmp_name"], $cover);
+    }
+    $cover_img = $_FILES["cover"]["name"];
 
     $book_id = (int)$_POST["book_id"];
 
@@ -54,7 +61,7 @@ if (isset($_POST["edit-book"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-        edit_book($pdo, $book_id, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary);
+        edit_book($pdo, $book_id, $title, $genres, $authors, $date, $publisher, $purchase, $borrow, $pages, $summary, $cover_img);
 
         $pdo = null;
 

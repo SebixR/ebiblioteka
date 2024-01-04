@@ -139,9 +139,10 @@ if (isset($_SESSION["user_id"])) {
 
             </div>
             <div class="panel-right-half">
+
                 <label class="file-input">
                     <?php
-                    echo "<input type='file' name='choosefile' placeholder='Cover'>";
+                    echo "<input type='file' name='cover' placeholder='Cover'>";
                     echo "Upload Cover Image";
                     echo "<br>";
 

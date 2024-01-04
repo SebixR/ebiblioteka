@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function edit_book(object $pdo, int $book_id, string $title, array $genres, array $authors, string $date, string $publisher, float $purchase, float $borrow, int $pages, string $summary)
+function edit_book(object $pdo, int $book_id, string $title, array $genres, array $authors, string $date, string $publisher, float $purchase, float $borrow, int $pages, string $summary, string $cover)
 {
     //get the publisher's id
     $query_publisher = "SELECT publisher_id FROM publishers WHERE name = :publisher";
@@ -12,10 +12,14 @@ function edit_book(object $pdo, int $book_id, string $title, array $genres, arra
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $id = $result['publisher_id'];
 
+    $stmt_book = fetch_book_info($pdo, $book_id);
+    $row = $stmt_book->fetch(PDO::FETCH_ASSOC);
+    $backup_cover = $row['cover_img'];
+
     //add new book
     $query = "UPDATE books SET title = :title, publisher_id = :publisher_id, release_date = :release_date,
                  purchase_price = :purchase_price, borrow_price = :borrow_price, page_number = :page_number,
-                 summary = :summary WHERE book_id = :book_id";
+                 summary = :summary, cover_img = :cover WHERE book_id = :book_id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":title", $title);
     $stmt->bindParam(":publisher_id", $id);
@@ -24,6 +28,8 @@ function edit_book(object $pdo, int $book_id, string $title, array $genres, arra
     $stmt->bindParam(":borrow_price", $borrow);
     $stmt->bindParam(":page_number", $pages);
     $stmt->bindParam(":summary", $summary);
+    if (strlen($cover) == 0) $stmt->bindParam(":cover", $backup_cover);
+    else $stmt->bindParam(":cover", $cover);
     $stmt->bindParam(":book_id", $book_id);
     $stmt->execute();
 
