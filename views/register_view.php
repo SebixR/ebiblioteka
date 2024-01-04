@@ -14,13 +14,13 @@ require_once '../php/register.php';
 </head>
 <body>
 
-<div class="main">
-    <header>
-        <?php
-        require_once '../php/topnav.php';
-        ?>
-    </header>
+<header>
+    <?php
+    require_once '../php/topnav.php';
+    ?>
+</header>
 
+<div class="main">
     <div class="register">
         <h2>Register</h2>
         <form action="../php/register.php" method="post" class="register-form">

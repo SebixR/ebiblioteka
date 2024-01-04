@@ -13,13 +13,14 @@ require_once '../php/book_contr.php';
     <link rel="stylesheet" href="../css/book.css">
 </head>
 <body>
-<div class="main">
-    <header>
-        <?php
-        require_once '../php/topnav.php';
-        ?>
-    </header>
 
+<header>
+    <?php
+    require_once '../php/topnav.php';
+    ?>
+</header>
+
+<div class="main">
     <div class="notification-wrap" id="notifications"></div>
 
     <?php

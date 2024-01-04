@@ -20,12 +20,14 @@ if (isset($_SESSION["user_id"])) {
     if (get_user_role($_SESSION["user_id"]) === 'admin') {
         ?>
 
+        <header>
+            <?php
+            require_once '../php/topnav.php';
+            ?>
+        </header>
+
 <div class="main">
-    <header>
-        <?php
-        require_once '../php/topnav.php';
-        ?>
-    </header>
+
 
     <div class="control-panel-menu">
         <a class="panel-menu-button-active" href="contr_panel_books_view.php">View Books</a>

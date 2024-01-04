@@ -12,13 +12,13 @@
 </head>
 <body>
 
-<div class="main">
-    <header>
-        <?php
-        require_once '../php/topnav.php';
-        ?>
-    </header>
+<header>
+    <?php
+    require_once '../php/topnav.php';
+    ?>
+</header>
 
+<div class="main">
     <?php
     if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];

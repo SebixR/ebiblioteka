@@ -12,6 +12,10 @@ body {
   justify-content: center;
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 html {
@@ -21,6 +25,8 @@ html {
 @import "topnav";
 
 @import "footer";
+
+@import "main";
 
 .register-msg{
   display: flex;

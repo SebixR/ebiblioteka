@@ -1,6 +1,3 @@
-<?php
-?>
-
 <footer>
     <div class="footer-wrap">
         <div class="footer-content">

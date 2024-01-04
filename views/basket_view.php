@@ -14,13 +14,13 @@ require_once '../php/topnav_contr.php';
 </head>
 <body>
 
-<div class="main">
-    <header>
-        <?php
-        require_once '../php/topnav.php';
-        ?>
-    </header>
+<header>
+    <?php
+    require_once '../php/topnav.php';
+    ?>
+</header>
 
+<div class="main">
     <h3>
         Basket
     </h3>
@@ -120,10 +120,10 @@ require_once '../php/topnav_contr.php';
         </script>
 
     </div>
-
-    <?php
-    require_once "../php/footer.php";
-    ?>
-
 </div>
+
+<?php
+require_once "../php/footer.php";
+?>
+
 </body>
