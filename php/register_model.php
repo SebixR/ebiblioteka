@@ -47,5 +47,5 @@ function fetch_user_id($pdo, $email): int
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $row['user_id'];
+    return (int)$row['user_id'];
 }

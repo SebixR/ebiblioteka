@@ -39,14 +39,14 @@ if (isset($_SESSION["user_id"])) {
         <form class="panel-right" enctype="multipart/form-data" action="../php/contr_panel_edit.php" method="post">
 
             <?php
-            $book_id = $_GET['id'] ?? null; //get id or set to null otherwise
+            $book_id = (int)$_GET['id'] ?? null; //get id or set to null otherwise
             $book_info = get_book_info($book_id);
             $title = $book_info['title'];
             $date = $book_info['release_date'];
-            $publisher = get_publisher_name($book_info['publisher_id']);
-            $purchase_price = $book_info['purchase_price'];
-            $borrow_price = $book_info['borrow_price'];
-            $page_number = $book_info['page_number'];
+            $publisher = get_publisher_name((int)$book_info['publisher_id']);
+            $purchase_price = (float)$book_info['purchase_price'];
+            $borrow_price = (float)$book_info['borrow_price'];
+            $page_number = (int)$book_info['page_number'];
             $cover = $book_info['cover_img'];
             $summary = $book_info['summary'];
 
@@ -168,7 +168,7 @@ if (isset($_SESSION["user_id"])) {
 </div>
 
         <?php
-        require_once "../php/footer.php";
+        //require_once "../php/footer.php";
         ?>
 </body>
 

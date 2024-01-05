@@ -119,7 +119,7 @@ function get_genres(int $book_id): void
                 $value = ucfirst($row['name']);
                 echo "<li>";
                 echo "<label>";
-                if (book_has_genre($book_id, $row['genre_id']))
+                if (book_has_genre($book_id, (int)$row['genre_id']))
                 {
                     echo "<input type='checkbox' value='$value' name='genres[]' class='genre-check' checked>$value</input>";
                 }
@@ -156,7 +156,7 @@ function get_authors(int $book_id): array
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-            $author_data = get_author_info($row['author_id']);
+            $author_data = get_author_info((int)$row['author_id']);
 
             $authors[$index]['name'] = $author_data['name'];
             $authors[$index]['lastname'] = $author_data['last_name'];
@@ -167,7 +167,7 @@ function get_authors(int $book_id): array
     return $authors;
 }
 
-function get_author_info($author_id)
+function get_author_info(int $author_id)
 {
     require "connection.php";
     require_once "contr_panel_edit_model.php";
@@ -176,7 +176,7 @@ function get_author_info($author_id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function get_publisher_name($publisher_id): string
+function get_publisher_name(int $publisher_id): string
 {
     require "connection.php";
     require_once "contr_panel_edit_model.php";

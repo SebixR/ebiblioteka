@@ -22,7 +22,7 @@ require_once '../php/my_books_contr.php';
 
 <?php
 if (isset($_SESSION["user_id"])) {
-    $user_id = $_SESSION["user_id"];
+    $user_id = (int)$_SESSION["user_id"];
 
     check_borrowed_books($user_id);
 

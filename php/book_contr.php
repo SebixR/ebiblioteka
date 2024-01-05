@@ -22,9 +22,9 @@ function get_book_info(int $book_id): void
     $stmt = fetch_book_info($pdo, $book_id);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $title = $row['title'];
-    $publisher_id = $row['publisher_id'];
+    $publisher_id = (int)$row['publisher_id'];
     $publisher = get_publisher_name($publisher_id);
-    $release_date = $row['release_date'];
+    $release_date = (string)$row['release_date'];
     $pages = $row['page_number'];
     $price = $row['purchase_price'];
     $stmt = null;
@@ -41,7 +41,7 @@ function get_book_info(int $book_id): void
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-            $author_data = get_author_info($row['author_id']);
+            $author_data = get_author_info((int)$row['author_id']);
             $name = ucfirst($author_data['name']);
             $lastname = ucfirst($author_data['last_name']);
 
@@ -60,7 +60,7 @@ function get_book_info(int $book_id): void
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-            $genre_name = get_genre_name($row['genre_id']);
+            $genre_name = get_genre_name((int)$row['genre_id']);
             echo "<label>$genre_name    </label>";
         }
     }

@@ -40,7 +40,7 @@ if (isset($_SESSION["user_id"])) {
 
 </div>
         <?php
-        require_once "../php/footer.php";
+        //require_once "../php/footer.php";
         ?>
 </body>
 <?php

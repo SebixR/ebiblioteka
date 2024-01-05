@@ -25,15 +25,15 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] === "POST") { //same t
         {
             require_once "contr_panel_users_model.php";
             require_once "contr_panel_users_contr.php";
-            if (check_user_role($pdo, $result["user_id"]) === 'blocked') {
+            if (check_user_role($pdo, (int)$result["user_id"]) === 'blocked') {
                 $errors["user_blocked"] = "Your account has been blocked by an administrator!";
             }
 
-            if (is_email_wrong($result)) {
-                $errors["login_incorrect"] = "Incorrect email!";
+            if (is_email_wrong($result["email"])) {
+                $errors["login_incorrect"] = "Incorrect data!";
             }
-            if (!is_email_wrong($result) && is_password_wrong($password, $result["password"])) { //password - column name inside table
-                $errors["login_incorrect"] = "Incorrect password!";
+            if (!is_email_wrong($result["email"]) && is_password_wrong($password, $result["password"])) { //password - column name inside table
+                $errors["login_incorrect"] = "Incorrect data!";
             }
         } else {
             $errors["login_incorrect"] = "Incorrect email!";

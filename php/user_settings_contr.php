@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function get_user_info($user_id): void
+function get_user_info(int $user_id): void
 {
     try {
         require "connection.php";

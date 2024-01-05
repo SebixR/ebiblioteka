@@ -64,7 +64,7 @@ function get_borrowed_books(int $user_id): void
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         {
-            $book_id = $row['book_id'];
+            $book_id = (int)$row['book_id'];
             $stmt_book = fetch_book_info($pdo, $book_id);
             $book_info = $stmt_book->fetch(PDO::FETCH_ASSOC);
             $cover = $book_info['cover_img'];
@@ -106,7 +106,7 @@ function get_purchased_books(int $user_id): void
     {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         {
-            $book_id = $row['book_id'];
+            $book_id = (int)$row['book_id'];
             $stmt_book = fetch_book_info($pdo, $book_id);
             $book_info = $stmt_book->fetch(PDO::FETCH_ASSOC);
             $cover = $book_info['cover_img'];

@@ -9,7 +9,7 @@ function is_input_empty(string $email, string $password)
     } else return false;
 }
 
-function is_email_wrong(array|bool $result): bool
+function is_email_wrong(string $result): bool
 {
     if (!$result) {
         return true;

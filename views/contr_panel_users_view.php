@@ -41,7 +41,7 @@ if (get_user_role($_SESSION["user_id"]) === 'admin') {
 
 </div>
     <?php
-    require_once "../php/footer.php";
+    //require_once "../php/footer.php";
     ?>
 </body>
 

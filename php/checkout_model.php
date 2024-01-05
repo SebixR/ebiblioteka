@@ -70,5 +70,5 @@ function fetch_bookcase(object $pdo, int $user_id): int
     $stmt->bindParam(":user_id", $user_id);
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $row['bookcase_id'];
+    return (int)$row['bookcase_id'];
 }

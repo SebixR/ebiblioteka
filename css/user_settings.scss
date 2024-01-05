@@ -18,15 +18,19 @@ body {
   margin: 0;
 }
 
-html {
-  height: 100%;
-}
 
 @import "topnav";
 
 @import "footer";
 
-@import "main";
+.main {
+  width: 100%;
+  max-width: 2000px;
+  user-select: none;
+  flex: 1;
+  margin-bottom: 200px;
+  height: 100%;
+}
 
 .register {
   margin: 65px auto;

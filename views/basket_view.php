@@ -69,6 +69,12 @@ require_once '../php/topnav_contr.php';
             // Regenerate the list
             displayItems();
             displayTotalPrice()
+
+            if (items.length === 0)
+            {
+                const button = document.getElementById('continue');
+                button.disabled = true;
+            }
         }
 
         function displayTotalPrice()

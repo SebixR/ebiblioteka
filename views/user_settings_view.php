@@ -24,7 +24,7 @@ require_once '../php/user_settings_contr.php';
 <div class="main">
     <?php
     if (isset($_SESSION["user_id"])) {
-        $user_id = $_SESSION["user_id"];
+        $user_id = (int)$_SESSION["user_id"];
     ?>
 
     <div class="register">
