@@ -16,10 +16,6 @@ body {
   margin: auto;
 }
 
-html {
-  height: 100%;
-}
-
 header {
   width: 100%;
 }
@@ -246,7 +242,7 @@ footer .footer-wrap label {
   max-width: 2000px;
   user-select: none;
   flex: 1;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   height: 100%;
 }
 
