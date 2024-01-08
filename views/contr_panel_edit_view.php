@@ -142,13 +142,27 @@ if (isset($_SESSION["user_id"])) {
 
                 <label class="file-input">
                     <?php
-                    echo "<input type='file' name='cover' placeholder='Cover'>";
+                    echo "<input type='file' name='cover' placeholder='Cover' id='file_input' onchange='get_image_name()'>";
                     echo "Upload Cover Image";
                     echo "<br>";
 
-                    echo "<label>$cover</label>";
+                    echo "<label id='cover_label'>$cover</label>";
                     ?>
                 </label>
+
+                <script>
+                    function get_image_name()
+                    {
+                        let cover = document.getElementById("file_input").value;
+
+                        cover = cover.replace(/\\.*?\\/g, ''); //g - global - all occurrences
+                        cover = cover.substring(2);
+
+                        let cover_label = document.getElementById("cover_label");
+                        cover_label.textContent = cover;
+                    }
+                </script>
+
                 <?php
                 echo "<textarea maxlength='250' class='summary' name='summary'>$summary</textarea>";
                 echo "<input type='hidden' value=$book_id name='book_id'>"
